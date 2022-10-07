@@ -5,13 +5,13 @@ using System.Globalization;
 using System.Linq;
 using System.Windows.Data;
 
-namespace Nutris.Wpf.Converter;
+namespace Nutri.Wpf.Converter;
 
 public class IngredientsPer100gByName : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        if (!(value is List<Ingredient> ingredients))
+        if (!(value is List<Nutrient> ingredients))
             return value;
 
         if (!(parameter is string pararm))

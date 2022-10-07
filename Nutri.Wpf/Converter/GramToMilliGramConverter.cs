@@ -4,14 +4,16 @@ using System.Windows.Data;
 
 namespace Nutri.Wpf.Converter;
 
-public class AddKcalConverter : IValueConverter
+internal class GramToMilliGramConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        if (!(value is double doubleValue))
+        if (!(value is double val))
             return value;
 
-        return doubleValue.ToString() + " kcal";
+        var test = val;
+
+        throw new NotImplementedException();
     }
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

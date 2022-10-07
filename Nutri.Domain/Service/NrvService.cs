@@ -9,18 +9,31 @@ public class NrvService
 
     public List<NrvModel> GetNrvs()
     {
-        if (_nrvs is null)
-        {
-            _nrvs = new();
+        EnsureNrvLoaded();
 
-            string nrvJson = File.ReadAllText("nrv.json");
+        return _nrvs!;
+    }
 
-            var nrvs = JsonConvert.DeserializeObject<List<NrvModel>>(nrvJson);
+    public NrvModel? GetNrv(string name)
+    {
+        EnsureNrvLoaded();
 
-            if (nrvs is not null)
-                _nrvs.AddRange(nrvs);
-        }
+        return _nrvs!.FirstOrDefault(x => x.Name.ToLower() == name.ToLower())!;
+    }
 
-        return _nrvs;
+    private void EnsureNrvLoaded()
+    {
+        if (_nrvs is not null)
+            return;
+
+        _nrvs = new();
+
+        string nrvJson = File.ReadAllText("nrv.json");
+        List<NrvModel> nrvs = JsonConvert.DeserializeObject<List<NrvModel>>(nrvJson)!;
+
+        if (nrvs is null)
+            throw new AccessViolationException();
+
+        _nrvs.AddRange(nrvs);
     }
 }

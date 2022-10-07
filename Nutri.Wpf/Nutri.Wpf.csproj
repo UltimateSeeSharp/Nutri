@@ -28,10 +28,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Converter\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Nutri.Domain\Nutri.Domain.csproj" />
   </ItemGroup>
 

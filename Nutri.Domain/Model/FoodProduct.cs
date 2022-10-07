@@ -13,5 +13,5 @@ public class FoodProcuct
 
     public DateTime PublicationDate { get; set; }
 
-    public List<Ingredient> Ingredients { get; set; }
+    public List<Nutrient> Ingredients { get; set; }
 }

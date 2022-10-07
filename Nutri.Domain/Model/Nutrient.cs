@@ -1,8 +1,8 @@
 ﻿namespace Nutri.Domain.Model;
 
-public class Ingredient
+public class Nutrient
 {
-    public Ingredient(string name, string unit, double amount)
+    public Nutrient(string name, string unit, double amount)
     {
         Name = name;
         Unit = unit;

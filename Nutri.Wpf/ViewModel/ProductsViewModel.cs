@@ -1,5 +1,6 @@
 ﻿using Nutri.Domain.Model;
 using Nutri.Domain.Service;
+using Nutri.Wpf.Component;
 using Nutri.Wpf.Infrastructure;
 using System;
 using System.Collections.Generic;
@@ -31,8 +32,20 @@ public class ProductsViewModel : BaseViewModel
 
 			_selectedFoodProduct = value;
 			OnPropertyChanged();
+			OnPropertyChanged(nameof(NutritionTable));
+			OnPropertyChanged(nameof(FattyAcidTable));
+			OnPropertyChanged(nameof(MineralsTraceElementsTable));
+			OnPropertyChanged(nameof(VitaminsTable));
+			OnPropertyChanged(nameof(OtherTable));
 		}
 	}
+
+
+	public NutrientTable? NutritionTable => new() { FoodProduct = SelectedFoodProduct! };
+	public FattyAcidTable? FattyAcidTable => new() { FoodProduct = SelectedFoodProduct! };
+	public MineralsTraceElementsTable? MineralsTraceElementsTable => new() { FoodProduct = SelectedFoodProduct! };
+	public VitaminsTable? VitaminsTable => new() { FoodProduct = SelectedFoodProduct! };
+	public OtherTable? OtherTable => new() { FoodProduct = SelectedFoodProduct! };
 
 
 	private string _searchText = String.Empty;
@@ -53,6 +66,7 @@ public class ProductsViewModel : BaseViewModel
 
     public async Task<List<FoodProcuct>> LoadFoodProductsAsync(CancellationToken cancellationToken)
     {
+		await Task.Delay(2000);
         return await _productService.GetFoodProcuctsAsync(loadAll: true, search: SearchText);
     }
 }

@@ -1,39 +1,37 @@
 ﻿using Nutri.Domain.Model;
 using Nutri.Domain.Service;
-using Nutri.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Data;
 
-namespace Nutri.Wpf.Converter;
+namespace Nutri.Wpf.Converter.ProductConverter;
 
-public class WaterConsumptionConverter : IValueConverter
+public class IngredientsToNrvPercent : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        if (!(value is List<Nutrient> ingredients))
+        if (!(value is List<Nutrient> nutrients))
             return value;
 
         if (!(parameter is string param))
             return value;
 
-        if (param == "NaN")
-            return "NaN";
-
         var nrvService = Bootstrapper.Resolve<NrvService>();
-        var nrvs = nrvService.GetNrvs();
 
-        var ingredient = ingredients.FirstOrDefault(x => x.Name == param);
-        var nrv = nrvs.FirstOrDefault(x => x.Name == param);
+        Nutrient nutrient = nutrients.FirstOrDefault(x => x.Name.ToLower() == param.ToLower())!;
+        NrvModel nrvModel = nrvService.GetNrv(param)!;
 
-        if(ingredient is null || nrv is null)
+        if (nutrient is null || nrvModel is null)
             return value;
 
-        var nrv1Percent = nrv.Nrv / 100;
+        if (nrvModel.Nrv is 0)
+            return String.Empty;
 
-        return Math.Round(ingredient.Amount / nrv1Percent).ToString() + " %";
+        var result = nutrient.Amount / (nrvModel.Nrv / 100);
+
+        return Math.Round(result, 1).ToString() + " %";
     }
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
