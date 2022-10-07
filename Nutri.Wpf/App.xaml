@@ -1,0 +1,185 @@
+﻿<Application x:Class="Nutri.Wpf.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Nutri.Wpf"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+    <Application.Resources>
+        <ResourceDictionary>
+            
+            <ResourceDictionary.MergedDictionaries>
+                <materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="Green" SecondaryColor="LightGreen" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="ExpanderDefault" TargetType="Expander" BasedOn="{StaticResource MaterialDesignExpander}">
+                <Setter Property="HorizontalAlignment" Value="Stretch" />
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="TextElement.FontFamily" Value="/Fonts/#Liebherr Text Bold"/>
+            </Style>
+
+            <!--Button-->
+
+            <Style x:Key="ArrowButton" TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatMidBgButton}">
+                <Setter Property="Background" Value="#b02db300" />
+                <Setter Property="TextElement.FontFamily" Value="/Fonts/#Liebherr Text"/>
+            </Style>
+
+            <Style x:Key="ButtonIndeterminate" TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
+                <Setter Property="materialDesign:ButtonProgressAssist.Value" Value="-1" />
+                <Setter Property="materialDesign:ButtonProgressAssist.IsIndeterminate" Value="True" />
+            </Style>
+
+            <!--SolidColorBrush-->
+
+            <SolidColorBrush x:Key="LwnLightGrayAlphaReduced" Color="#30E0E0E0"/>
+            <SolidColorBrush x:Key="LwnLightGray" Color="#FFE0E0E0"/>
+            <SolidColorBrush x:Key="LwnYellow" Color="#A0FFD000"/>
+            <SolidColorBrush x:Key="LwnYellowHeavy" Color="#FFFFD000"/>
+            <SolidColorBrush x:Key="LwnYellowLight" Color="#10000000"/>
+
+            <SolidColorBrush x:Key="WhiteAlpha1" Color="#10000000"/>
+
+            <!--DataGrid-->
+
+            <Style x:Key="DataGridDefault" TargetType="DataGrid" BasedOn="{StaticResource MaterialDesignDataGrid}">
+                <Setter Property="IsReadOnly" Value="True" />
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="AutoGenerateColumns" Value="False" />
+                <Setter Property="SelectionMode" Value="Single" />
+                <Setter Property="SelectionUnit" Value="FullRow" />
+                <Setter Property="HorizontalScrollBarVisibility" Value="Disabled" />
+                <Setter Property="IsReadOnly" Value="True" />
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="CanUserSortColumns" Value="True" />
+                <Setter Property="RowStyle">
+                    <Setter.Value>
+                        <Style TargetType="DataGridRow">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#B02db300" />
+                                    <Setter Property="Foreground" Value="Black" />
+                                </Trigger>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="LightGray" />
+                                    <Setter Property="Foreground" Value="Black" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!--TextBox-->
+
+            <Style x:Key="TextBoxDefault" TargetType="TextBox" BasedOn="{StaticResource MaterialDesignOutlinedTextBox}">
+                <Setter Property="TextElement.FontFamily" Value="/Fonts/#Liebherr Text"/>
+                <Setter Property="TextWrapping" Value="Wrap" />
+                <Setter Property="VerticalScrollBarVisibility" Value="Disabled" />
+                <Setter Property="IsReadOnly" Value="True" />
+                <Setter Property="Margin" Value="10 10 10 20" />
+                <Setter Property="materialDesign:HintAssist.Foreground" Value="Black" />
+                <Setter Property="materialDesign:HintAssist.FontFamily" Value="/Fonts/#Liebherr Text" />
+                <Setter Property="materialDesign:HintAssist.HintOpacity" Value="80" />
+            </Style>
+
+            <Style x:Key="TextBoxDefaultCentered" TargetType="TextBox" BasedOn="{StaticResource TextBoxDefault}">
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            </Style>
+
+            <Style x:Key="TextBoxBig" TargetType="TextBox" BasedOn="{StaticResource MaterialDesignDataGridComboBoxEditableTextBox}">
+                <Setter Property="HorizontalScrollBarVisibility" Value="Visible" />
+                <Setter Property="Margin" Value="10 0 10 30" />
+                <Setter Property="TextElement.FontFamily" Value="/Fonts/#Liebherr Text"/>
+                <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
+                <Setter Property="IsReadOnly" Value="True" />
+                <Setter Property="Background" Value="Black" />
+            </Style>
+
+            <Style x:Key="TextBoxSmall" TargetType="TextBox" BasedOn="{StaticResource TextBoxDefault}">
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="Foreground" Value="Gray" />
+            </Style>
+
+            <Style x:Key="TextBoxDefaultBold" TargetType="TextBox" BasedOn="{StaticResource TextBoxDefault}">
+                <Setter Property="FontFamily" Value="/Fonts/#Liebherr Text Bold" />
+            </Style>
+
+            <Style x:Key="TextBoxDefaultBoldEditable" TargetType="TextBox" BasedOn="{StaticResource TextBoxDefaultBold}">
+                <Setter Property="IsReadOnly" Value="False" />
+            </Style>
+
+            <Style x:Key="TextBoxDefaultEditable" TargetType="TextBox" BasedOn="{StaticResource TextBoxDefault}">
+                <Setter Property="IsReadOnly" Value="False" />
+                <Setter Property="Height" Value="50" />
+                <Setter Property="BorderBrush" Value="LightGray" />
+            </Style>
+
+            <!--TextBlock-->
+
+            <Style x:Key="TextBlockBigBold" TargetType="TextBlock">
+                <Setter Property="TextElement.FontFamily" Value="/Fonts/#Liebherr Text Bold"/>
+                <Setter Property="FontSize" Value="20" />
+            </Style>
+
+            <Style x:Key="TextBlockDefault" TargetType="TextBlock">
+                <Setter Property="TextElement.FontFamily" Value="/Fonts/#Liebherr Text"/>
+            </Style>
+
+
+            <Style x:Key="TextBlockMedium" TargetType="TextBlock" BasedOn="{StaticResource TextBlockDefault}">
+                <Setter Property="FontFamily" Value="/Fonts/#Liebherr Text Bold" />
+                <Setter Property="FontSize" Value="16" />
+            </Style>
+
+            <Style x:Key="TextBlockSmall" TargetType="TextBlock" BasedOn="{StaticResource TextBlockDefault}">
+                <Setter Property="TextElement.FontFamily" Value="/Fonts/#Liebherr Text"/>
+                <Setter Property="FontSize" Value="14" />
+            </Style>
+
+            <Style x:Key="TextBlockBigBoldSmall" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBigBold}">
+                <Setter Property="FontSize" Value="13" />
+            </Style>
+
+            <!--Border-->
+
+            <Style x:Key="SmoothBorder" TargetType="Border">
+                <Setter Property="Padding" Value="20" />
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="BorderThickness" Value="2" />
+                <Setter Property="BorderBrush" Value="{StaticResource LwnLightGray}"/>
+            </Style>
+
+            <Style x:Key="SmoothBorderBold" TargetType="Border">
+                <Setter Property="Padding" Value="20" />
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="BorderThickness" Value="3" />
+                <Setter Property="BorderBrush" Value="{StaticResource WhiteAlpha1}"/>
+                <Setter Property="Background" Value="{StaticResource WhiteAlpha1}" />
+            </Style>
+
+            <SolidColorBrush x:Key="GrayDark" Color="#252525"/>
+            <SolidColorBrush x:Key="GrayDarkAlpha1" Color="#50252525"/>
+
+            <Style x:Key="SmoothGrid" TargetType="DataGrid" BasedOn="{StaticResource MaterialDesignDataGrid}">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="IsReadOnly" Value="True" />
+                <Setter Property="Foreground" Value="{StaticResource GrayDark}" />
+                <Setter Property="HorizontalGridLinesBrush" Value="{StaticResource GrayDark}" />
+                <Setter Property="FontWeight" Value="DemiBold" />
+                <Setter Property="HorizontalScrollBarVisibility" Value="Disabled" />
+                <Setter Property="AutoGenerateColumns" Value="False" />
+
+            </Style>
+
+            <Style x:Key="TextBoxSmoothEditable" TargetType="TextBox" BasedOn="{StaticResource MaterialDesignOutlinedTextBox}">
+                <Setter Property="BorderBrush" Value="LightGray" />
+                <Setter Property="TextWrapping" Value="Wrap" />
+                <Setter Property="VerticalScrollBarVisibility" Value="Disabled" />
+                <Setter Property="materialDesign:HintAssist.Foreground" Value="Black" />
+                <Setter Property="materialDesign:HintAssist.FontFamily" Value="/Fonts/#Liebherr Text" />
+                <Setter Property="materialDesign:HintAssist.HintOpacity" Value="80" />
+            </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
