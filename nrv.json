@@ -1,0 +1,327 @@
+[
+      {
+        "Name": "Protein",
+        "Unit": "g",
+        "Nrv": 65
+      },
+      {
+        "Name": "Total lipid (fat)",
+        "Unit": "g",
+        "Nrv": 73
+      },
+      {
+        "Name": "Carbohydrate, by difference",
+        "Unit": "g",
+        "Nrv": 275
+      },
+      {
+        "Name": "Energy",
+        "Unit": "kcal",
+        "Nrv": 2000
+      },
+      {
+        "Name": "Alcohol, ethyl",
+        "Unit": "g",
+        "Nrv": 0.0
+      },
+      {
+        "Name": "Water",
+        "Unit": "g",
+        "Nrv": 2000
+      },
+      {
+        "Name": "Caffeine",
+        "Unit": "mg",
+        "Nrv": 0.0
+      },
+      {
+        "Name": "Theobromine",
+        "Unit": "mg",
+        "Nrv": 0.0
+      },
+      {
+        "Name": "Sugars, total including NLEA",
+        "Unit": "g",
+        "Nrv": 36
+      },
+      {
+        "Name": "Fiber, total dietary",
+        "Unit": "g",
+        "Nrv": 28
+      },
+      {
+        "Name": "Calcium, Ca",
+        "Unit": "mg",
+        "Nrv": 1300
+      },
+      {
+        "Name": "Iron, Fe",
+        "Unit": "mg",
+        "Nrv": 18
+      },
+      {
+        "Name": "Magnesium, Mg",
+        "Unit": "mg",
+        "Nrv": 420
+      },
+      {
+        "Name": "Phosphorus, P",
+        "Unit": "mg",
+        "Nrv": 1250
+      },
+      {
+        "Name": "Potassium, K",
+        "Unit": "mg",
+        "Nrv": 4700
+      },
+      {
+        "Name": "Sodium, Na",
+        "Unit": "mg",
+        "Nrv": 2300
+      },
+      {
+        "Name": "Zinc, Zn",
+        "Unit": "mg",
+        "Nrv": 11
+      },
+      {
+        "Name": "Copper, Cu",
+        "Unit": "mg",
+        "Nrv": 0.9
+      },
+      {
+        "Name": "Selenium, Se",
+        "Unit": "µg",
+        "Nrv": 55
+      },
+      {
+        "Name": "Retinol",
+        "Unit": "µg",
+        "Nrv": 900
+      },
+      {
+        "Name": "Vitamin A, RAE",
+        "Unit": "µg",
+        "Nrv": 900
+      },
+      {
+        "Name": "Carotene, beta",
+        "Unit": "µg",
+        "Nrv": 7.0
+      },
+      {
+        "Name": "Carotene, alpha",
+        "Unit": "µg",
+        "Nrv": 0.0
+      },
+      {
+        "Name": "Vitamin E (alpha-tocopherol)",
+        "Unit": "mg",
+        "Nrv": 15
+      },
+      {
+        "Name": "Vitamin D (D2 + D3)",
+        "Unit": "µg",
+        "Nrv": 125
+      },
+      {
+        "Name": "Cryptoxanthin, beta",
+        "Unit": "µg",
+        "Nrv": 0.0
+      },
+      {
+        "Name": "Lycopene",
+        "Unit": "µg",
+        "Nrv": 0.0
+      },
+      {
+        "Name": "Lutein + zeaxanthin",
+        "Unit": "µg",
+        "Nrv": 0.0
+      },
+      {
+        "Name": "Vitamin C, total ascorbic acid",
+        "Unit": "mg",
+        "Nrv": 90
+      },
+      {
+        "Name": "Thiamin",
+        "Unit": "mg",
+        "Nrv": 1.5
+      },
+      {
+        "Name": "Riboflavin",
+        "Unit": "mg",
+        "Nrv": 1.7
+      },
+      {
+        "Name": "Niacin",
+        "Unit": "mg",
+        "Nrv": 20
+      },
+      {
+        "Name": "Vitamin B-6",
+        "Unit": "mg",
+        "Nrv": 2
+      },
+      {
+        "Name": "Folate, total",
+        "Unit": "µg",
+        "Nrv": 400
+      },
+      {
+        "Name": "Vitamin B-12",
+        "Unit": "µg",
+        "Nrv": 6
+      },
+      {
+        "Name": "Choline, total",
+        "Unit": "mg",
+        "Nrv": 550
+      },
+      {
+        "Name": "Vitamin K (phylloquinone)",
+        "Unit": "µg",
+        "Nrv": 120
+      },
+      {
+        "Name": "Folic acid",
+        "Unit": "µg",
+        "Nrv": 0
+      },
+      {
+        "Name": "Folate, food",
+        "Unit": "µg",
+        "Nrv": 0
+      },
+      {
+        "Name": "Folate, DFE",
+        "Unit": "µg",
+        "Nrv": 0
+      },
+      {
+        "Name": "Vitamin E, added",
+        "Unit": "mg",
+        "Nrv": 0.0
+      },
+      {
+        "Name": "Vitamin B-12, added",
+        "Unit": "µg",
+        "Nrv": 0.0
+      },
+      {
+        "Name": "Cholesterol",
+        "Unit": "mg",
+        "Nrv": 300
+      },
+      {
+        "Name": "Fatty acids, total saturated",
+        "Unit": "g",
+        "Nrv": 13
+      },
+      {
+        "Name": "SFA 4:0",
+        "Unit": "g",
+        "Nrv": 0.0
+      },
+      {
+        "Name": "SFA 6:0",
+        "Unit": "g",
+        "Nrv": 0.0
+      },
+      {
+        "Name": "SFA 8:0",
+        "Unit": "g",
+        "Nrv": 0.0
+      },
+      {
+        "Name": "SFA 10:0",
+        "Unit": "g",
+        "Nrv": 0.0
+      },
+      {
+        "Name": "SFA 12:0",
+        "Unit": "g",
+        "Nrv": 0.0
+      },
+      {
+        "Name": "SFA 14:0",
+        "Unit": "g",
+        "Nrv": 0.0
+      },
+      {
+        "Name": "SFA 16:0",
+        "Unit": "g",
+        "Nrv": 0.0
+      },
+      {
+        "Name": "SFA 18:0",
+        "Unit": "g",
+        "Nrv": 0.0
+      },
+      {
+        "Name": "MUFA 18:1",
+        "Unit": "g",
+        "Nrv": 0.0
+      },
+      {
+        "Name": "PUFA 18:2",
+        "Unit": "g",
+        "Nrv": 0.0
+      },
+      {
+        "Name": "PUFA 18:3",
+        "Unit": "g",
+        "Nrv": 0.0
+      },
+      {
+        "Name": "PUFA 20:4",
+        "Unit": "g",
+        "Nrv": 0.0
+      },
+      {
+        "Name": "PUFA 22:6 n-3 (DHA)",
+        "Unit": "g",
+        "Nrv": 1
+      },
+      {
+        "Name": "MUFA 16:1",
+        "Unit": "g",
+        "Nrv": 0.0
+      },
+      {
+        "Name": "PUFA 18:4",
+        "Unit": "g",
+        "Nrv": 0.0
+      },
+      {
+        "Name": "MUFA 20:1",
+        "Unit": "g",
+        "Nrv": 0.0
+      },
+      {
+        "Name": "PUFA 2:5 n-3 (EPA)",
+        "Unit": "g",
+        "Nrv": 0.5
+      },
+      {
+        "Name": "MUFA 22:1",
+        "Unit": "g",
+        "Nrv": 0.0
+      },
+      {
+        "Name": "PUFA 22:5 n-3 (DPA)",
+        "Unit": "g",
+        "Nrv": 0.5
+      },
+      {
+        "Name": "Fatty acids, total monounsaturated",
+        "Unit": "g",
+        "Nrv": 40
+      },
+      {
+        "Name": "Fatty acids, total polyunsaturated",
+        "Unit": "g",
+        "Nrv": 20
+      }
+]

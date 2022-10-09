@@ -1,7 +1,9 @@
-﻿using Nutri.Domain.Model;
+﻿using LiveCharts;
+using Nutri.Domain.Model;
 using Nutri.Domain.Service;
 using Nutri.Wpf.Component;
 using Nutri.Wpf.Infrastructure;
+using Nutri.Wpf.Service;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -12,16 +14,24 @@ namespace Nutri.Wpf.ViewModel;
 public class ProductsViewModel : BaseViewModel
 {
 	private readonly ProductService _productService;
+	private readonly UserService _userService;
+	private readonly GraphService _graphService;
 
-	public ProductsViewModel(ProductService productService)
+	public ProductsViewModel(ProductService productService, UserService userService, GraphService graphService)
 	{
 		_productService = productService;
+        _userService = userService;
+		_graphService = graphService;
     }
 
 	private LazyProperty<List<FoodProcuct>>? _foodProcucts = null;
-	public LazyProperty<List<FoodProcuct>> FoodProcucts => _foodProcucts ??= new(LoadFoodProductsAsync);
+	public LazyProperty<List<FoodProcuct>> FoodProcucts => _foodProcucts ??= new(GetFoodProductsAsync);
+    public async Task<List<FoodProcuct>> GetFoodProductsAsync(CancellationToken cancellationToken)
+	{
+		return await _productService.GetFoodProcuctsAsync(loadAll: true, search: SearchText);
+	}
 
-	private FoodProcuct? _selectedFoodProduct = null;
+    private FoodProcuct? _selectedFoodProduct = null;
 	public FoodProcuct? SelectedFoodProduct
 	{
 		get => _selectedFoodProduct;
@@ -37,12 +47,14 @@ public class ProductsViewModel : BaseViewModel
 			OnPropertyChanged(nameof(MineralsTraceElementsTable));
 			OnPropertyChanged(nameof(VitaminsTable));
 			OnPropertyChanged(nameof(OtherTable));
+			OnPropertyChanged(nameof(CalorieDistribution));
 		}
 	}
 
+	public SeriesCollection CalorieDistribution => SelectedFoodProduct is null ? new() : _graphService.CalorieDistributionPiChart(SelectedFoodProduct);
 
-	public NutrientTable? NutritionTable => new() { FoodProduct = SelectedFoodProduct! };
-	public FattyAcidTable? FattyAcidTable => new() { FoodProduct = SelectedFoodProduct! };
+    public NutrientTable? NutritionTable => new() { FoodProduct = SelectedFoodProduct! };
+	public FattyAcidTable? FattyAcidTable => new() { FoodProduct = SelectedFoodProduct!, UserSetting = _userService.CurrentUserSetting };
 	public MineralsTraceElementsTable? MineralsTraceElementsTable => new() { FoodProduct = SelectedFoodProduct! };
 	public VitaminsTable? VitaminsTable => new() { FoodProduct = SelectedFoodProduct! };
 	public OtherTable? OtherTable => new() { FoodProduct = SelectedFoodProduct! };
@@ -59,14 +71,12 @@ public class ProductsViewModel : BaseViewModel
 
 			_searchText = value;
 			OnPropertyChanged();
-			OnPropertyChanged(nameof(FoodProcucts));
-		}
+			LoadFoodProductsAsync();
+        }
 	}
 
-
-    public async Task<List<FoodProcuct>> LoadFoodProductsAsync(CancellationToken cancellationToken)
+	public async Task LoadFoodProductsAsync()
     {
-		await Task.Delay(2000);
-        return await _productService.GetFoodProcuctsAsync(loadAll: true, search: SearchText);
+        FoodProcucts.Value = await _productService.GetFoodProcuctsAsync(loadAll: true, search: SearchText);
     }
 }

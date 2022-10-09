@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="Nutri.Wpf.Component.NutritionTable"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Nutri.Wpf.Component"
+             mc:Ignorable="d" 
+             
+             d:Background="White"
+             d:DesignHeight="300" d:DesignWidth="900">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0" Text="{Binding DailyConsumption.Calories, UpdateSourceTrigger=PropertyChanged}"
+                                   Style="{StaticResource TextBlockBigBold}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+            <TextBlock Grid.Column="1" Text="{Binding DailyConsumption.Fat, UpdateSourceTrigger=PropertyChanged}"
+                                   Style="{StaticResource TextBlockBigBold}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+            <TextBlock Grid.Column="2" Text="{Binding DailyConsumption.Carbohydrates, UpdateSourceTrigger=PropertyChanged}"
+                                   Style="{StaticResource TextBlockBigBold}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+            <TextBlock Grid.Column="3" Text="{Binding DailyConsumption.Protein, UpdateSourceTrigger=PropertyChanged}"
+                                   Style="{StaticResource TextBlockBigBold}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0" Text="Kalorien" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                   Style="{StaticResource TextBlockSmall}"/>
+            <TextBlock Grid.Column="1" Text="Fett" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                   Style="{StaticResource TextBlockSmall}"/>
+            <TextBlock Grid.Column="2" Text="Kohlenhydrate" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                   Style="{StaticResource TextBlockSmall}"/>
+            <TextBlock Grid.Column="3" Text="Protein" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                   Style="{StaticResource TextBlockSmall}"/>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -17,44 +17,68 @@
         <productConverter:IngredientsToNrvPercent x:Key="IngredientsToNrvPercent"/>
     </UserControl.Resources>
 
-    <Border Style="{StaticResource SmoothBorder}" Padding="0" Margin="0 0 0 10">
+    <Border Style="{StaticResource SmoothBorder}" Padding="0">
         <Expander Header="Minerale &amp; Spurenelemente" Style="{StaticResource ExpanderDefault}">
             <StackPanel Orientation="Vertical" TextBlock.Foreground="{DynamicResource MaterialDesignBody}" Margin="24,8,24,16">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="80"/>
-                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="55"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="48"/>
                     </Grid.ColumnDefinitions>
 
                     <StackPanel Grid.Column="0">
-                        <TextBlock Text="Energie" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="Wasser" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="Fett" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="Kohlenhydrate" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="davon Zucker" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="Balaststoffe" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="Proteine" Style="{StaticResource TextBlockSmall}"/>
+                        <TextBlock Text="Mineralstoffe" Style="{StaticResource TextBlockBigBoldSmall}" Margin="0 0 0 10"/>
+
+                        <TextBlock Text="Magnesium" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="Natrium" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="Kalium" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="Kalzium" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="Phosphor" Style="{StaticResource TextBlockSmallList}"/>
+
+                        <TextBlock Text="Spurenelemente" Style="{StaticResource TextBlockBigBoldSmall}" Margin="0 15 0 5"/>
+
+                        <TextBlock Text="Eisen" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="Kupfer" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="Selen" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="Zink" Style="{StaticResource TextBlockSmallList}"/>
                     </StackPanel>
 
                     <StackPanel Grid.Column="1">
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Energy'}" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Water'}" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Total lipid (fat)'}" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Carbohydrate, by difference'}" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Sugars, total including NLEA'}" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Fiber, total dietary'}" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Protein'}" Style="{StaticResource TextBlockSmall}"/>
+                        <TextBlock Text="pro 100g" Style="{StaticResource TextBlockBigBoldSmall}" Margin="0 0 0 10"/>
+
+                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Magnesium, Mg'}" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Sodium, Na'}" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Potassium, K'}" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Calcium, Ca'}" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Phosphorus, P'}" Style="{StaticResource TextBlockSmallList}"/>
+
+                        <TextBlock Text="" Style="{StaticResource TextBlockBigBoldSmall}" Margin="0 15 0 5"/>
+                        
+                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Iron, Fe'}" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Copper, Cu'}" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Selenium, Se'}" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Zinc, Zn'}" Style="{StaticResource TextBlockSmallList}"/>
                     </StackPanel>
 
-                    <StackPanel Grid.Column="2" HorizontalAlignment="Right">
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='Energy'}" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='Water'}" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='Total lipid (fat)'}" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='Carbohydrate, by difference'}" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='Sugars, total including NLEA'}" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='Fiber, total dietary'}" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='Protein'}" Style="{StaticResource TextBlockSmall}"/>
+                    <Grid Grid.Column="2" Background="LightGray" Width="2" Margin="10 25 10 0"/>
+
+                    <StackPanel Grid.Column="3" HorizontalAlignment="Right">
+                        <TextBlock Text="NRV %" Style="{StaticResource TextBlockBigBoldSmall}" Margin="0 0 0 10"/>
+
+                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='Magnesium, Mg'}" Style="{StaticResource TextBlockSmallBoldList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='Sodium, Na'}" Style="{StaticResource TextBlockSmallBoldList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='Potassium, K'}" Style="{StaticResource TextBlockSmallBoldList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='Calcium, Ca'}" Style="{StaticResource TextBlockSmallBoldList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='Phosphorus, P'}" Style="{StaticResource TextBlockSmallBoldList}"/>
+
+                        <TextBlock Text="" Style="{StaticResource TextBlockBigBoldSmall}" Margin="0 15 0 5"/>
+
+                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='Magnesium, Mg'}" Style="{StaticResource TextBlockSmallBoldList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='Sodium, Na'}" Style="{StaticResource TextBlockSmallBoldList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='Potassium, K'}" Style="{StaticResource TextBlockSmallBoldList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='Calcium, Ca'}" Style="{StaticResource TextBlockSmallBoldList}"/>
                     </StackPanel>
                 </Grid>
             </StackPanel>

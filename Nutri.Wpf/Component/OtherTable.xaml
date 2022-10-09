@@ -10,51 +10,57 @@
              Background="Transparent"
              d:Background="White"
              d:DesignHeight="250" d:DesignWidth="800">
+    
     <UserControl.Resources>
         <productConverter:IngredientsToNutrient x:Key="IngredientsToNutrient"/>
         <productConverter:IngredientsToNutrientAndUnit x:Key="IngredientsToNutrientAndUnit"/>
         <productConverter:IngredientsToNrvPercent x:Key="IngredientsToNrvPercent"/>
     </UserControl.Resources>
 
-    <Border Style="{StaticResource SmoothBorder}" Padding="0" Margin="0 0 0 10">
-        <Expander Header="Andere Stoffe" Style="{StaticResource ExpanderDefault}">
+    <Border Style="{StaticResource SmoothBorder}" Padding="0">
+        <Expander Header="Weitere Inhaltsstoffe" Style="{StaticResource ExpanderDefault}">
             <StackPanel Orientation="Vertical" TextBlock.Foreground="{DynamicResource MaterialDesignBody}" Margin="24,8,24,16">
                 <Grid>
+                    
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="80"/>
-                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="55"/>
                     </Grid.ColumnDefinitions>
 
                     <StackPanel Grid.Column="0">
-                        <TextBlock Text="Energie" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="Wasser" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="Fett" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="Kohlenhydrate" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="davon Zucker" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="Balaststoffe" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="Proteine" Style="{StaticResource TextBlockSmall}"/>
+                        <TextBlock Text="Stimulanzien" Style="{StaticResource TextBlockBigBoldSmall}" Margin="0 0 0 10"/>
+                        <TextBlock Text="Alkohol" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="Koffein" Style="{StaticResource TextBlockSmallList}"/>
+
+                        <TextBlock Text="Weitere" Style="{StaticResource TextBlockBigBoldSmall}" Margin="0 15 0 5"/>
+                        <TextBlock Text="Cholin" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="Theobromin" Style="{StaticResource TextBlockSmallList}"/>
+
+                        <TextBlock Text="Antioxidantien" Style="{StaticResource TextBlockBigBoldSmall}" Margin="0 15 0 5"/>
+                        <TextBlock Text="Beta-Carotin" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="Alpha-Carotin" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="Beta-Cryptonxanthin" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="Lycopin" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="Lutein &amp; Zeaxanthin" Style="{StaticResource TextBlockSmallList}"/>
                     </StackPanel>
 
                     <StackPanel Grid.Column="1">
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Energy'}" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Water'}" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Total lipid (fat)'}" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Carbohydrate, by difference'}" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Sugars, total including NLEA'}" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Fiber, total dietary'}" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Protein'}" Style="{StaticResource TextBlockSmall}"/>
+                        <TextBlock Text="pro 100g" Style="{StaticResource TextBlockBigBoldSmall}" Margin="0 0 0 10"/>
+                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Alcohol, ethyl'}" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Caffeine'}" Style="{StaticResource TextBlockSmallList}"/>
+                        
+                        <TextBlock Text="" Style="{StaticResource TextBlockBigBoldSmall}" Margin="0 15 0 5"/>
+                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Choline, total'}" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Theobromine'}" Style="{StaticResource TextBlockSmallList}"/>
+         
+                        <TextBlock Text="" Style="{StaticResource TextBlockBigBoldSmall}" Margin="0 15 0 5"/>
+                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Carotene, beta'}" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Carotene, alpha'}" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Cryptoxanthin, beta'}" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Lycopene'}" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Lutein + zeaxanthin'}" Style="{StaticResource TextBlockSmallList}"/>
                     </StackPanel>
-
-                    <StackPanel Grid.Column="2" HorizontalAlignment="Right">
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='Energy'}" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='Water'}" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='Total lipid (fat)'}" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='Carbohydrate, by difference'}" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='Sugars, total including NLEA'}" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='Fiber, total dietary'}" Style="{StaticResource TextBlockSmall}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='Protein'}" Style="{StaticResource TextBlockSmall}"/>
-                    </StackPanel>
+                    
                 </Grid>
             </StackPanel>
         </Expander>

@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Nutri.Domain.Service;
+using Nutri.Wpf.Service;
 using Nutri.Wpf.View;
 using Nutri.Wpf.ViewModel;
 
@@ -33,6 +34,8 @@ internal static class Bootstrapper
     {
         builder.RegisterType<ProductService>().SingleInstance();
         builder.RegisterType<NrvService>().SingleInstance();
+        builder.RegisterType<UserService>().SingleInstance();
+        builder.RegisterType<GraphService>().SingleInstance();
 
         return builder;
     }

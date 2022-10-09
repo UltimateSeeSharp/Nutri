@@ -32,9 +32,6 @@ public class IngredientsToNutrientAndUnit : IValueConverter
 
             else if (nutrient.Unit == "mg")
                 return amount + " mg";
-
-            else if (nutrient.Unit == "µg")
-                return amount + " mg";
         }
 
         return nutrient.Amount + " " + nutrient.Unit;

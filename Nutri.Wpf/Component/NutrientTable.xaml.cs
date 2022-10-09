@@ -17,4 +17,11 @@ public partial class NutrientTable : UserControl
         get => (FoodProcuct)GetValue(FoodProductProperty);
         set => SetValue(FoodProductProperty, value);
     }
+
+    public static readonly DependencyProperty IsExpandedProperty = DependencyProperty.Register("IsExpanded", typeof(bool), typeof(NutrientTable));
+    public bool IsExpanded
+    {
+        get => (bool)GetValue(IsExpandedProperty);
+        set => SetValue(IsExpandedProperty, value);
+    }    
 }

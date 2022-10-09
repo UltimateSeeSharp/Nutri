@@ -27,7 +27,7 @@ public class IngredientsToNrvPercent : IValueConverter
             return value;
 
         if (nrvModel.Nrv is 0)
-            return String.Empty;
+            return "-";
 
         var result = nutrient.Amount / (nrvModel.Nrv / 100);
 
