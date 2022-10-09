@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nutri.Wpf", "Nutri.Wpf\Nutri.Wpf.csproj", "{B5DDA275-201D-449F-A739-58A0CB554ACA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nutri.Wpf", "Nutri.Wpf\Nutri.Wpf.csproj", "{B5DDA275-201D-449F-A739-58A0CB554ACA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nutri.Domain", "Nutri.Domain\Nutri.Domain.csproj", "{61653A9D-7AD4-4EB5-898D-D859094B5A9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nutri.Domain", "Nutri.Domain\Nutri.Domain.csproj", "{61653A9D-7AD4-4EB5-898D-D859094B5A9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

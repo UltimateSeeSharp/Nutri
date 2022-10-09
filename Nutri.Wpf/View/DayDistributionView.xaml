@@ -72,11 +72,13 @@
                              Visibility="{Binding FoodProcucts.IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}"
                              Style="{StaticResource MaterialDesignCircularProgressBar}"/>
 
-                <StackPanel Grid.Row="2" Margin="0 100 0 20">
-                    <TextBlock Text="{Binding SelectedFoodProduct.Name}" Style="{StaticResource TextBlockBigBold}"/>
-                    <TextBlock Text="{Binding SelectedFoodProduct.Ingredients, Converter={StaticResource IngredientsPer100gByName}, ConverterParameter=Energy}"/>
+                <StackPanel Grid.Row="2" Margin="20 35 20 20">
+                    <TextBlock Text="{Binding SelectedFoodProduct.Name}" 
+                               Style="{StaticResource TextBlockBigBold}"/>
+                    <TextBlock Text="{Binding SelectedFoodProduct.Ingredients, Converter={StaticResource IngredientsPer100gByName}, ConverterParameter=Energy}"
+                               Margin="0 3 0 20"/>
 
-                    <Separator Background="LightGray" Margin="0 5 0 0"/>
+                    <Separator Background="LightGray" Margin="0 0 0 25"/>
 
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -84,22 +86,29 @@
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBox Grid.Column="0" Text="{Binding CurrentFoodPortion.Amount, UpdateSourceTrigger=PropertyChanged}" Margin="0 20 10 20"
+                        <TextBox Grid.Column="0" 
+                                 Text="{Binding CurrentFoodPortion.Amount, UpdateSourceTrigger=PropertyChanged}" 
+                                 Margin="0 0 0 20"
                                  materialDesign:HintAssist.Hint="Menge [g]"
                                  Style="{StaticResource TextBoxDefaultEditable}"/>
 
-                        <materialDesign:TimePicker Grid.Column="1" SelectedTime="{Binding CurrentFoodPortion.Timestamp, UpdateSourceTrigger=PropertyChanged}"
+                        <materialDesign:TimePicker Grid.Column="1" 
+                                                   SelectedTime="{Binding CurrentFoodPortion.Timestamp, UpdateSourceTrigger=PropertyChanged}"
+                                                    Margin="10 0 0 20"
                                                    Style="{StaticResource MaterialDesignOutlinedTimePicker}"/>
                     </Grid>
 
-                    <Button Content="Hinzufügen" Command="{Binding AddFoodProduct}"
-                            Style="{StaticResource ArrowButton}"/>
+                    <Button Content="Hinzufügen" Command="{Binding AddFoodProduct}" Style="{StaticResource ArrowButton}"/>
                 </StackPanel>
             </Grid>
         </Border>
 
         <Border Grid.Column="1" Style="{StaticResource SmoothBorder}" Margin="10 20 20 20">
-
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    
+                </Grid.ColumnDefinitions>
+            </Grid>
         </Border>
     </Grid>
 </UserControl>

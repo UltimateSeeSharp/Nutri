@@ -48,7 +48,7 @@ public class DayDistributionService
     private void Seed()
     {
         Random r = new();
-        var products = _productService.GetFoodProcuctsAsync(loadAll: true).Result;
+        var products = _productService.GetFoodProcucts(loadAll: true);
 
         for (int x = 0; x < 18; x++)
         {
