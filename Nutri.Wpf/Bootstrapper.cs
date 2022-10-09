@@ -35,6 +35,8 @@ internal static class Bootstrapper
         builder.RegisterType<ProductService>().SingleInstance();
         builder.RegisterType<NrvService>().SingleInstance();
         builder.RegisterType<UserService>().SingleInstance();
+        builder.RegisterType<DayDistributionService>().SingleInstance();
+
         builder.RegisterType<GraphService>().SingleInstance();
 
         return builder;
@@ -46,6 +48,9 @@ internal static class Bootstrapper
 
         builder.RegisterType<ProductsView>().SingleInstance();
         builder.RegisterType<ProductsViewModel>().SingleInstance();
+
+        builder.RegisterType<DayDistributionView>().SingleInstance();
+        builder.RegisterType<DayDistributionViewModel>().SingleInstance();
 
         return builder;
     }

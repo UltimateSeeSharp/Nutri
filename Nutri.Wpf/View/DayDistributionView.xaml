@@ -1,0 +1,105 @@
+﻿<UserControl x:Class="Nutri.Wpf.View.DayDistributionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:converter="clr-namespace:Nutri.Wpf.Converter"
+             xmlns:productConverter="clr-namespace:Nutri.Wpf.Converter.ProductConverter"
+             xmlns:components="clr-namespace:Nutri.Wpf.Component"
+             xmlns:local="clr-namespace:Nutri.Wpf.View"
+             mc:Ignorable="d" 
+             
+             d:Background="White"
+             d:DesignHeight="1040" d:DesignWidth="1600">
+
+    <UserControl.Resources>
+        <converter:IngredientByNameConverter x:Key="IngredientsCaloriesConverter"/>
+        <converter:IngredientsPer100gByName x:Key="IngredientsPer100gByName"/>
+        <converter:AddKcalConverter x:Key="AddKcalConverter"/>
+        <converter:WaterConsumptionConverter x:Key="WaterConsumptionConverter"/>
+
+        <productConverter:FoodProductToNutrient x:Key="FoodProductToNutrient"/>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" Style="{StaticResource SmoothBorder}" Margin="20 20 10 20">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBox Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" Margin="0 0 0 10" BorderBrush="LightGray"
+                         materialDesign:HintAssist.Hint="Suche ..." 
+                         Style="{StaticResource TextBoxDefaultEditable}"/>
+
+                <DataGrid Grid.Row="1"
+                          Visibility="{Binding FoodProcucts.IsLoading, Converter={StaticResource InverseBooleanToVisibilityConverter}}"
+                          ItemsSource="{Binding FoodProcucts.Value, UpdateSourceTrigger=PropertyChanged}"
+                          SelectedItem="{Binding SelectedFoodProduct, UpdateSourceTrigger=PropertyChanged}"
+                          Style="{StaticResource DataGridDefault}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Nahrungsmittel" Width="5*"
+                                            Binding="{Binding Name}"/>
+
+                        <DataGridTextColumn Header="Kalorien" Width="2*"
+                                            Binding="{Binding Ingredients, Converter={StaticResource IngredientsCaloriesConverter}, 
+                                            ConverterParameter=Energy}"/>
+
+                        <DataGridTextColumn Header="Proteine" Width="2*"
+                                            Binding="{Binding Ingredients, Converter={StaticResource IngredientsCaloriesConverter}, 
+                                            ConverterParameter=Protein}"/>
+
+                        <DataGridTextColumn Header="Kohlenhydrate" Width="2*"
+                                            Binding="{Binding Ingredients, Converter={StaticResource IngredientsCaloriesConverter}, 
+                                            ConverterParameter='Carbohydrate, by difference'}"/>
+
+                        <DataGridTextColumn Header="Fette" Width="2*"
+                                            Binding="{Binding Ingredients, Converter={StaticResource IngredientsCaloriesConverter}, 
+                                            ConverterParameter='Total lipid (fat)'}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <ProgressBar Grid.Row="1" Width="100"
+                             IsIndeterminate="{Binding FoodProcucts.IsLoading}"
+                             Visibility="{Binding FoodProcucts.IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}"
+                             Style="{StaticResource MaterialDesignCircularProgressBar}"/>
+
+                <StackPanel Grid.Row="2" Margin="0 100 0 20">
+                    <TextBlock Text="{Binding SelectedFoodProduct.Name}" Style="{StaticResource TextBlockBigBold}"/>
+                    <TextBlock Text="{Binding SelectedFoodProduct.Ingredients, Converter={StaticResource IngredientsPer100gByName}, ConverterParameter=Energy}"/>
+
+                    <Separator Background="LightGray" Margin="0 5 0 0"/>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBox Grid.Column="0" Text="{Binding CurrentFoodPortion.Amount, UpdateSourceTrigger=PropertyChanged}" Margin="0 20 10 20"
+                                 materialDesign:HintAssist.Hint="Menge [g]"
+                                 Style="{StaticResource TextBoxDefaultEditable}"/>
+
+                        <materialDesign:TimePicker Grid.Column="1" SelectedTime="{Binding CurrentFoodPortion.Timestamp, UpdateSourceTrigger=PropertyChanged}"
+                                                   Style="{StaticResource MaterialDesignOutlinedTimePicker}"/>
+                    </Grid>
+
+                    <Button Content="Hinzufügen" Command="{Binding AddFoodProduct}"
+                            Style="{StaticResource ArrowButton}"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Border Grid.Column="1" Style="{StaticResource SmoothBorder}" Margin="10 20 20 20">
+
+        </Border>
+    </Grid>
+</UserControl>

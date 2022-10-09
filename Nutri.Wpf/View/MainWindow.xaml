@@ -36,6 +36,8 @@
                 </StackPanel>
             </TabItem.Header>
 
+            <views:DayDistributionView/>
+
         </TabItem>
 
         <TabItem Margin="4">
