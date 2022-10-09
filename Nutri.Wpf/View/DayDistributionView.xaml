@@ -105,9 +105,14 @@
 
         <Border Grid.Column="1" Style="{StaticResource SmoothBorder}" Margin="10 20 20 20">
             <Grid>
-                <Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <DataGrid ItemsSource="{Binding TodaysFoodPortions, UpdateSourceTrigger=PropertyChanged}">
                     
-                </Grid.ColumnDefinitions>
+                </DataGrid>
             </Grid>
         </Border>
     </Grid>

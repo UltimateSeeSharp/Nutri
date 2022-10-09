@@ -27,6 +27,8 @@ public class DayDistributionViewModel : BaseViewModel
         return await _productService.GetFoodProcuctsAsync(loadAll: true, search: SearchText);
     }
 
+    
+
     private FoodProcuct? _selectedFoodProduct = null;
     public FoodProcuct? SelectedFoodProduct
     {
