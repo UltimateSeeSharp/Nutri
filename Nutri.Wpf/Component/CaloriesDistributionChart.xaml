@@ -1,0 +1,69 @@
+﻿<UserControl x:Class="Nutri.Wpf.Component.CaloriesDistributionChart"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:converter="clr-namespace:Nutri.Wpf.Converter"
+             xmlns:productConverter="clr-namespace:Nutri.Wpf.Converter.ProductConverter"
+             xmlns:components="clr-namespace:Nutri.Wpf.Component"
+             xmlns:livecharts="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             xmlns:local="clr-namespace:Nutri.Wpf.Component"
+             mc:Ignorable="d" 
+             Background="White"
+             d:DesignHeight="700" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <productConverter:IngredientsToNutrient x:Key="IngredientsToNutrient"/>
+        <productConverter:IngredientsToNutrientAndUnit x:Key="IngredientsToNutrientAndUnit"/>
+        <productConverter:IngredientsToNrvPercent x:Key="IngredientsToNrvPercent"/>
+        <converter:GramToMilliGramConverter x:Key="GramToMilliGramConverter"/>
+    </UserControl.Resources>
+
+    <Border Style="{StaticResource SmoothBorder}" Padding="0">
+        <Expander Header="Kalorienverteilung" Style="{StaticResource ExpanderDefault}">
+            <Grid>
+
+                <Grid Margin="24,8,24,16" Visibility="{Binding IsFoodProductSeleted, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0">
+                        <TextBlock Text="{Binding FoodProduct.Name}" Style="{StaticResource TextBlockBigBold}" Margin="0 0 0 3"/>
+                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Energy'}"/>
+                        <Separator Background="LightGray" Margin="0 15 300 0" />
+                    </StackPanel>
+
+                    <livecharts:PieChart Grid.Row="1" Margin="0 30 0 30" Height="280"
+                                         Series="{Binding CalorieDistribution, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 10">
+                        <Ellipse Grid.Column="1" Fill="#076633" Width="15" Height="15" Margin="15 0 0 0"/>
+                        <TextBlock Grid.Column="2" Text="Proteine" Margin="10 0 0 0"/>
+
+                        <Ellipse Grid.Column="3" Fill="#07d94d" Width="15" Height="15" Margin="15 0 0 0"/>
+                        <TextBlock Grid.Column="4" Text="Kohlenhydrate" Margin="10 0 0 0"/>
+
+                        <Ellipse Grid.Column="5" Fill="#26b55b" Width="15" Height="15" Margin="15 0 0 0"/>
+                        <TextBlock Grid.Column="6" Text="Fette" Margin="10 0 0 0"/>
+                    </StackPanel>
+                </Grid>
+
+                <Grid Height="420" Visibility="{Binding IsFoodProductSeleted, Converter={StaticResource InverseBooleanToVisibilityConverter}}" >
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TextBlock Text="Kein Produkt gewählt" Style="{StaticResource TextBlockBigBold}" VerticalAlignment="Center"/>
+                        <TextBlock Text="Wähle ein Produkt aus der Liste" Style="{StaticResource TextBlockSmall}" Margin="0 8 0 20" HorizontalAlignment="Center"/>
+
+                        <ProgressBar IsIndeterminate="True" Height="2" Width="100" HorizontalAlignment="Center"
+                                 Background="Transparent" BorderBrush="Transparent" Foreground="LightGray"/>
+                    </StackPanel>
+                </Grid>
+
+            </Grid>
+        </Expander>
+    </Border>
+
+</UserControl>

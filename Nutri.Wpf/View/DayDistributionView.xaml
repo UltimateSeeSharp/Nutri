@@ -9,8 +9,8 @@
              xmlns:components="clr-namespace:Nutri.Wpf.Component"
              xmlns:local="clr-namespace:Nutri.Wpf.View"
              mc:Ignorable="d" 
+             Background="White"
              
-             d:Background="White"
              d:DesignHeight="1040" d:DesignWidth="1600">
 
     <UserControl.Resources>
@@ -106,13 +106,39 @@
         <Border Grid.Column="1" Style="{StaticResource SmoothBorder}" Margin="10 20 20 20">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="100"/>
                 </Grid.RowDefinitions>
 
-                <DataGrid ItemsSource="{Binding TodaysFoodPortions, UpdateSourceTrigger=PropertyChanged}">
-                    
+                <Grid Margin="0 0 0 20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0" Margin="10 10 0 0">
+                        <TextBlock Text="Heute kosumiert"  Style="{StaticResource TextBlockBigBold}"/>
+                        <StackPanel Orientation="Horizontal" Margin="0 1 0 0">
+                            <TextBlock Text="{Binding TodaysFoodPortions.Value.Count}" Style="{StaticResource TextBlockSmall}"/>
+                            <TextBlock Text=" Produkte" Style="{StaticResource TextBlockSmall}"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <TextBox Grid.Column="2" Text="{Binding SearchTextFoodPortions, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Suche ..." Style="{StaticResource TextBoxDefaultEditable}" Width="300" Margin="0 0 0 0" BorderBrush="LightGray"/>
+                </Grid>
+
+                <DataGrid Grid.Row="1"
+                          ItemsSource="{Binding TodaysFoodPortions.Value, UpdateSourceTrigger=PropertyChanged}"
+                          Style="{StaticResource DataGridDefault}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Nahrungsmittel" Binding="{Binding FoodProduct.Name}" Width="5*"/>
+                        <DataGridTextColumn Header="Zeitpunkt" Binding="{Binding Timestamp, StringFormat=HH:ss}" Width="1*"/>
+                        <DataGridTextColumn Header="Menge" Binding="{Binding Amount}" Width="1*"/>
+                    </DataGrid.Columns>
                 </DataGrid>
+
+                <components:NutritionTable Grid.Row="2" DataContext="{Binding NutritionTable, UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
         </Border>
     </Grid>

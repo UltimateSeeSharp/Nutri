@@ -16,7 +16,7 @@ public class FoodProductToNutrient : IValueConverter
         if (!(parameter is string param))
             return value;
 
-        var protein = foodProcuct.Ingredients.FirstOrDefault(x => x.Name == param)!.Amount;
+        var protein = foodProcuct.Nutrients.FirstOrDefault(x => x.Name == param)!.Amount;
         var grade = protein / 4;
 
         if (grade < 1)

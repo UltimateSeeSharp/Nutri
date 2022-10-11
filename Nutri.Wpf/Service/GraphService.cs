@@ -13,9 +13,9 @@ public class GraphService
 {
     public SeriesCollection CalorieDistributionPiChart(FoodProcuct foodProcuct)
     {
-        var proteinCalories = foodProcuct.Ingredients.FirstOrDefault(x => x.Name == "Protein")!.Amount * 4;
-        var carbohydratesCalories = foodProcuct.Ingredients.FirstOrDefault(x => x.Name == "Carbohydrate, by difference")!.Amount * 4;
-        var fatCalories = foodProcuct.Ingredients.FirstOrDefault(x => x.Name == "Total lipid (fat)")!.Amount * 9;
+        var proteinCalories = foodProcuct.Nutrients.FirstOrDefault(x => x.Name == "Protein")!.Amount * 4;
+        var carbohydratesCalories = foodProcuct.Nutrients.FirstOrDefault(x => x.Name == "Carbohydrate, by difference")!.Amount * 4;
+        var fatCalories = foodProcuct.Nutrients.FirstOrDefault(x => x.Name == "Total lipid (fat)")!.Amount * 9;
 
         var totalCalories = proteinCalories + carbohydratesCalories + fatCalories;
         var calories1Percent = totalCalories / 100;
@@ -29,7 +29,7 @@ public class GraphService
             new PieSeries
             {
                 Title = "Kohlenhydrate",
-                Values = new ChartValues<ObservableValue> { new ObservableValue(proteinPercent) },
+                Values = new ChartValues<ObservableValue> { new ObservableValue(carbohydratesPercent) },
                 DataLabels = true,
                 Fill = new SolidColorBrush(Color.FromRgb(7, 217, 77))
             },
@@ -43,7 +43,7 @@ public class GraphService
             new PieSeries
             {
                 Title = "Proteine",
-                Values = new ChartValues<ObservableValue> { new ObservableValue(carbohydratesPercent) },
+                Values = new ChartValues<ObservableValue> { new ObservableValue(proteinPercent) },
                 DataLabels = true,
                 Fill = new SolidColorBrush(Color.FromRgb(7, 102, 51))
             },

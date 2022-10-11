@@ -11,12 +11,10 @@
              xmlns:local="clr-namespace:Nutri.Wpf.View"
              mc:Ignorable="d" 
              Background="White"
-
-             d:Background="White"
              d:DesignHeight="1040" d:DesignWidth="1600">
 
     <UserControl.Resources>
-        <converter:IngredientByNameConverter x:Key="IngredientsCaloriesConverter"/>
+        <converter:IngredientByNameConverter x:Key="IngredientByNameConverter"/>
         <converter:IngredientsPer100gByName x:Key="IngredientsPer100gByName"/>
         <converter:AddKcalConverter x:Key="AddKcalConverter"/>
         <converter:WaterConsumptionConverter x:Key="WaterConsumptionConverter"/>
@@ -56,77 +54,33 @@
                                             Binding="{Binding Name}"/>
 
                         <DataGridTextColumn Header="Kalorien" Width="2*"
-                                            Binding="{Binding Ingredients, Converter={StaticResource IngredientsCaloriesConverter}, 
+                                            Binding="{Binding Ingredients, Converter={StaticResource IngredientByNameConverter}, 
                                             ConverterParameter=Energy}"/>
 
                         <DataGridTextColumn Header="Proteine" Width="2*"
-                                            Binding="{Binding Ingredients, Converter={StaticResource IngredientsCaloriesConverter}, 
+                                            Binding="{Binding Ingredients, Converter={StaticResource IngredientByNameConverter}, 
                                             ConverterParameter=Protein}"/>
 
                         <DataGridTextColumn Header="Kohlenhydrate" Width="2*"
-                                            Binding="{Binding Ingredients, Converter={StaticResource IngredientsCaloriesConverter}, 
+                                            Binding="{Binding Ingredients, Converter={StaticResource IngredientByNameConverter}, 
                                             ConverterParameter='Carbohydrate, by difference'}"/>
 
                         <DataGridTextColumn Header="Fette" Width="2*"
-                                            Binding="{Binding Ingredients, Converter={StaticResource IngredientsCaloriesConverter}, 
+                                            Binding="{Binding Ingredients, Converter={StaticResource IngredientByNameConverter}, 
                                             ConverterParameter='Total lipid (fat)'}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
         </Border>
 
-        <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="auto"/>
-            </Grid.RowDefinitions>
-
-            <Border Grid.Row="0" Style="{StaticResource SmoothBorder}" Margin="10 20 20 10">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-
-                    <StackPanel Grid.Row="0">
-                        <TextBlock Text="{Binding SelectedFoodProduct.Name}" Style="{StaticResource TextBlockBigBold}" Margin="0 0 0 3"/>
-                        <TextBlock Text="{Binding SelectedFoodProduct.Ingredients, Converter={StaticResource IngredientsPer100gByName}, ConverterParameter=Energy}"/>
-                        <Separator Background="LightGray" Margin="0 15 300 0" />
-                        <Grid Margin="0 14 0 0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="auto"/>
-                            </Grid.ColumnDefinitions>
-
-                            <StackPanel Grid.Column="0">
-                                <TextBlock Text="Muskelaufbau" Style="{StaticResource TextBlockSmall}"/>
-                            </StackPanel>
-
-                            <StackPanel Grid.Column="2">
-                                <materialDesign:RatingBar Value="{Binding SelectedFoodProduct, 
-                                                                          Converter={StaticResource FoodProductToNutrient},
-                                                                          ConverterParameter='Protein', UpdateSourceTrigger=PropertyChanged}"
-                                                          Margin="0 0 0 5"/>
-                            </StackPanel>
-                        </Grid>
-                    </StackPanel>
-
-                    <livecharts:PieChart Grid.Row="1" LegendLocation="Bottom" 
-                                         Margin="0 25 0 15"
-                                         Series="{Binding CalorieDistribution, UpdateSourceTrigger=PropertyChanged}"/>
-
-                </Grid>
-            </Border>
-
-            <StackPanel Grid.Row="1" Margin="10 10 20 20">
-                <components:NutrientTable DataContext="{Binding NutritionTable}" Margin="0 0 0 10"/>
-                <components:FattyAcidTable DataContext="{Binding FattyAcidTable}" Margin="0 0 0 10"/>
-                <components:MineralsTraceElementsTable DataContext="{Binding MineralsTraceElementsTable}" Margin="0 0 0 10"/>
-                <components:VitaminsTable DataContext="{Binding VitaminsTable}" Margin="0 0 0 10"/>
-                <components:OtherTable DataContext="{Binding OtherTable}"/>
-            </StackPanel>
-        </Grid>
+        <StackPanel Grid.Column="1" Margin="10 20 20 20">
+            <components:CaloriesDistributionChart DataContext="{Binding CaloriesDistributionChart}" Margin="0 0 0 12"/>
+            <components:NutrientTable DataContext="{Binding NutritionTable}" IsExpanded="True" Margin="0 0 0 12"/>
+            <components:FattyAcidTable DataContext="{Binding FattyAcidTable}" Margin="0 0 0 12"/>
+            <components:MineralsTraceElementsTable DataContext="{Binding MineralsTraceElementsTable}" Margin="0 0 0 12"/>
+            <components:VitaminsTable DataContext="{Binding VitaminsTable}" Margin="0 0 0 12"/>
+            <components:OtherTable DataContext="{Binding OtherTable}"/>
+        </StackPanel>
 
     </Grid>
 

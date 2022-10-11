@@ -16,6 +16,41 @@ public class DayDistributionService
         Seed();
     }
 
+    public async Task<List<FoodPortion>> GetTodaysFoodPortionAsync(bool allMorning = false, bool allLunch = false, bool allDinner = false, string? search = null)
+    {
+        return await Task.Factory.StartNew(() =>
+        {
+            var portionsToday = _foodPortions.Where(x => x.Timestamp.Year == _currentDate.Year
+                                         && x.Timestamp.Month == _currentDate.Month
+                                         && x.Timestamp.Day == _currentDate.Day).ToList();
+
+            if (!allMorning && !allLunch && !allDinner && string.IsNullOrEmpty(search))
+                return _foodPortions;
+
+            if (!string.IsNullOrEmpty(search))
+                return _foodPortions.Where(x => x.FoodProduct.Name.ToLower().Contains(search.ToLower())).ToList();
+
+            else if (allMorning)
+            {
+                var test = portionsToday.Where(x => x.Timestamp.Hour > 5 && x.Timestamp.Hour < 12).ToList();
+                return test;
+            }
+
+            else if (allLunch)
+            {
+                var test = portionsToday.Where(x => x.Timestamp.Hour > 12 && x.Timestamp.Hour < 14).ToList();
+                return test;
+            }
+
+            else if (allDinner)
+                return portionsToday.Where(x => x.Timestamp.Hour > 18 && x.Timestamp.Hour <= 20).ToList();
+
+            else
+                return new();
+
+        });
+    }
+
     public List<FoodPortion> GetTodaysFoodPortions(bool allMorning = false, bool allLunch = false, bool allDinner = false)
     {
         var portionsToday = _foodPortions.Where(x => x.Timestamp.Year == _currentDate.Year

@@ -6,12 +6,12 @@ public class FoodProcuct
     {
         Name = name;
         PublicationDate = publicationDate;
-        Ingredients = new();
+        Nutrients = new();
     }
 
     public string Name { get; set; }
 
     public DateTime PublicationDate { get; set; }
 
-    public List<Nutrient> Ingredients { get; set; }
+    public List<Nutrient> Nutrients { get; set; }
 }

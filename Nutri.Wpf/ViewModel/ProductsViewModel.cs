@@ -1,5 +1,4 @@
-﻿using LiveCharts;
-using Nutri.Domain.Model;
+﻿using Nutri.Domain.Model;
 using Nutri.Domain.Service;
 using Nutri.Wpf.Component;
 using Nutri.Wpf.Infrastructure;
@@ -26,10 +25,6 @@ public class ProductsViewModel : BaseViewModel
 
 	private LazyProperty<List<FoodProcuct>>? _foodProcucts = null;
 	public LazyProperty<List<FoodProcuct>> FoodProcucts => _foodProcucts ??= new(GetFoodProductsAsync);
-    public async Task<List<FoodProcuct>> GetFoodProductsAsync(CancellationToken cancellationToken)
-	{
-		return await _productService.GetFoodProcuctsAsync(loadAll: true, search: SearchText);
-	}
 
     private FoodProcuct? _selectedFoodProduct = null;
 	public FoodProcuct? SelectedFoodProduct
@@ -42,23 +37,26 @@ public class ProductsViewModel : BaseViewModel
 
 			_selectedFoodProduct = value;
 			OnPropertyChanged();
+
+			OnPropertyChanged(nameof(IsFoodProductSeleted));
+
+			OnPropertyChanged(nameof(CaloriesDistributionChart));
 			OnPropertyChanged(nameof(NutritionTable));
 			OnPropertyChanged(nameof(FattyAcidTable));
 			OnPropertyChanged(nameof(MineralsTraceElementsTable));
 			OnPropertyChanged(nameof(VitaminsTable));
 			OnPropertyChanged(nameof(OtherTable));
-			OnPropertyChanged(nameof(CalorieDistribution));
 		}
 	}
 
-	public SeriesCollection CalorieDistribution => SelectedFoodProduct is null ? new() : _graphService.CalorieDistributionPiChart(SelectedFoodProduct);
-
+	public CaloriesDistributionChart CaloriesDistributionChart => new() { FoodProduct = SelectedFoodProduct! };
     public NutrientTable? NutritionTable => new() { FoodProduct = SelectedFoodProduct! };
 	public FattyAcidTable? FattyAcidTable => new() { FoodProduct = SelectedFoodProduct!, UserSetting = _userService.CurrentUserSetting };
 	public MineralsTraceElementsTable? MineralsTraceElementsTable => new() { FoodProduct = SelectedFoodProduct! };
 	public VitaminsTable? VitaminsTable => new() { FoodProduct = SelectedFoodProduct! };
 	public OtherTable? OtherTable => new() { FoodProduct = SelectedFoodProduct! };
 
+	public bool IsFoodProductSeleted => SelectedFoodProduct is not null;
 
 	private string _searchText = String.Empty;
 	public string SearchText
@@ -71,11 +69,18 @@ public class ProductsViewModel : BaseViewModel
 
 			_searchText = value;
 			OnPropertyChanged();
+
 			LoadFoodProductsAsync();
         }
 	}
 
-	public async Task LoadFoodProductsAsync()
+
+    public async Task<List<FoodProcuct>> GetFoodProductsAsync(CancellationToken cancellationToken)
+    {
+        return await _productService.GetFoodProcuctsAsync(loadAll: true, search: SearchText);
+    }
+
+    public async Task LoadFoodProductsAsync()
     {
         FoodProcucts.Value = await _productService.GetFoodProcuctsAsync(loadAll: true, search: SearchText);
     }

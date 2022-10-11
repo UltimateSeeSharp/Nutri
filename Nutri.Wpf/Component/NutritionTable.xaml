@@ -3,11 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:converter="clr-namespace:Nutri.Wpf.Converter.ProductConverter"
              xmlns:local="clr-namespace:Nutri.Wpf.Component"
              mc:Ignorable="d" 
              
              d:Background="White"
              d:DesignHeight="300" d:DesignWidth="900">
+
+    <UserControl.Resources>
+        <converter:IngredientsToNutrientAndUnit x:Key="IngredientsToNutrientAndUnit"/>
+    </UserControl.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -22,16 +28,16 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Column="0" Text="{Binding DailyConsumption.Calories, UpdateSourceTrigger=PropertyChanged}"
+            <TextBlock Grid.Column="0" Text="{Binding FoodPortions, UpdateSourceTrigger=PropertyChanged}"
                                    Style="{StaticResource TextBlockBigBold}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-            <TextBlock Grid.Column="1" Text="{Binding DailyConsumption.Fat, UpdateSourceTrigger=PropertyChanged}"
+            <TextBlock Grid.Column="1" Text="{Binding FoodPortions.Fat, UpdateSourceTrigger=PropertyChanged}"
                                    Style="{StaticResource TextBlockBigBold}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-            <TextBlock Grid.Column="2" Text="{Binding DailyConsumption.Carbohydrates, UpdateSourceTrigger=PropertyChanged}"
+            <TextBlock Grid.Column="2" Text="{Binding FoodPortions.Carbohydrates, UpdateSourceTrigger=PropertyChanged}"
                                    Style="{StaticResource TextBlockBigBold}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-            <TextBlock Grid.Column="3" Text="{Binding DailyConsumption.Protein, UpdateSourceTrigger=PropertyChanged}"
+            <TextBlock Grid.Column="3" Text="{Binding FoodPortions.Protein, UpdateSourceTrigger=PropertyChanged}"
                                    Style="{StaticResource TextBlockBigBold}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Grid>
 

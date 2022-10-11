@@ -76,7 +76,6 @@
                 <Setter Property="TextWrapping" Value="Wrap" />
                 <Setter Property="VerticalScrollBarVisibility" Value="Disabled" />
                 <Setter Property="IsReadOnly" Value="True" />
-                <Setter Property="Margin" Value="10 10 10 20" />
                 <Setter Property="materialDesign:HintAssist.Foreground" Value="Black" />
                 <Setter Property="materialDesign:HintAssist.FontFamily" Value="/Fonts/#Liebherr Text" />
                 <Setter Property="materialDesign:HintAssist.HintOpacity" Value="80" />
@@ -110,7 +109,6 @@
 
             <Style x:Key="TextBoxDefaultEditable" TargetType="TextBox" BasedOn="{StaticResource TextBoxDefault}">
                 <Setter Property="IsReadOnly" Value="False" />
-                <Setter Property="Height" Value="50" />
                 <Setter Property="BorderBrush" Value="LightGray" />
             </Style>
 
