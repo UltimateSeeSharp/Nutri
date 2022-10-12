@@ -52,6 +52,9 @@ internal static class Bootstrapper
         builder.RegisterType<DayDistributionView>().SingleInstance();
         builder.RegisterType<DayDistributionViewModel>().SingleInstance();
 
+        builder.RegisterType<NutrientDistributionView>().SingleInstance();
+        builder.RegisterType<NutrientDistributionViewModel>().SingleInstance();
+
         return builder;
     }
 }

@@ -15,12 +15,7 @@
              d:DesignHeight="1040" d:DesignWidth="1600">
 
     <UserControl.Resources>
-        <converter:IngredientByNameConverter x:Key="IngredientsCaloriesConverter"/>
-        <converter:IngredientsPer100gByName x:Key="IngredientsPer100gByName"/>
-        <converter:AddKcalConverter x:Key="AddKcalConverter"/>
-        <converter:WaterConsumptionConverter x:Key="WaterConsumptionConverter"/>
-
-        <productConverter:FoodProductToNutrient x:Key="FoodProductToNutrient"/>
+        <productConverter:IngredientsToNutrientAndUnit x:Key="IngredientsToNutrientAndUnit"/>
     </UserControl.Resources>
     
     <Grid>
@@ -51,19 +46,19 @@
                                             Binding="{Binding Name}"/>
 
                         <DataGridTextColumn Header="Kalorien" Width="2*"
-                                            Binding="{Binding Nutrients, Converter={StaticResource IngredientsCaloriesConverter}, 
+                                            Binding="{Binding Nutrients, Converter={StaticResource IngredientsToNutrientAndUnit}, 
                                             ConverterParameter='Energy'}"/>
 
                         <DataGridTextColumn Header="Proteine" Width="2*"
-                                            Binding="{Binding Nutrients, Converter={StaticResource IngredientsCaloriesConverter}, 
+                                            Binding="{Binding Nutrients, Converter={StaticResource IngredientsToNutrientAndUnit}, 
                                             ConverterParameter='Protein'}"/>
 
                         <DataGridTextColumn Header="Kohlenhydrate" Width="2*"
-                                            Binding="{Binding Nutrients, Converter={StaticResource IngredientsCaloriesConverter}, 
+                                            Binding="{Binding Nutrients, Converter={StaticResource IngredientsToNutrientAndUnit}, 
                                             ConverterParameter='Carbohydrate, by difference'}"/>
 
                         <DataGridTextColumn Header="Fette" Width="2*"
-                                            Binding="{Binding Nutrients, Converter={StaticResource IngredientsCaloriesConverter}, 
+                                            Binding="{Binding Nutrients, Converter={StaticResource IngredientsToNutrientAndUnit}, 
                                             ConverterParameter='Total lipid (fat)'}"/>
                     </DataGrid.Columns>
                 </DataGrid>
@@ -76,7 +71,7 @@
                 <StackPanel Grid.Row="2" Margin="20 35 20 20">
                     <TextBlock Text="{Binding SelectedFoodProduct.Name}" 
                                Style="{StaticResource TextBlockBigBold}"/>
-                    <TextBlock Text="{Binding SelectedFoodProduct.Ingredients, Converter={StaticResource IngredientsPer100gByName}, ConverterParameter=Energy}"
+                    <TextBlock Text="{Binding SelectedFoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter=Energy}"
                                Margin="0 3 0 20"/>
 
                     <Separator Background="LightGray" Margin="0 0 0 25"/>

@@ -14,11 +14,6 @@
              d:DesignHeight="1040" d:DesignWidth="1600">
 
     <UserControl.Resources>
-        <converter:IngredientByNameConverter x:Key="IngredientByNameConverter"/>
-        <converter:IngredientsPer100gByName x:Key="IngredientsPer100gByName"/>
-        <converter:AddKcalConverter x:Key="AddKcalConverter"/>
-        <converter:WaterConsumptionConverter x:Key="WaterConsumptionConverter"/>
-
         <productConverter:FoodProductToNutrientWithUnit x:Key="FoodProductToNutrientWithUnit"/>
     </UserControl.Resources>
 

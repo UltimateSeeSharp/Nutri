@@ -48,6 +48,8 @@
                 </StackPanel>
             </TabItem.Header>
 
+            <views:NutrientDistributionView/>
+
         </TabItem>
 
         <TabItem Margin="4">
