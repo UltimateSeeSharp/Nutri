@@ -12,6 +12,7 @@
 
     <UserControl.Resources>
         <converter:IngredientsToNutrientAndUnit x:Key="IngredientsToNutrientAndUnit"/>
+        <converter:FoodPortionsToTotalNutrient x:Key="FoodPortionsToTotalNutrient"/>
     </UserControl.Resources>
 
     <Grid>
@@ -28,16 +29,16 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Column="0" Text="{Binding FoodPortions, UpdateSourceTrigger=PropertyChanged}"
+            <TextBlock Grid.Column="0" Text="{Binding FoodPortions, Converter={StaticResource FoodPortionsToTotalNutrient}, ConverterParameter='Energy', UpdateSourceTrigger=PropertyChanged}"
                                    Style="{StaticResource TextBlockBigBold}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-            <TextBlock Grid.Column="1" Text="{Binding FoodPortions.Fat, UpdateSourceTrigger=PropertyChanged}"
+            <TextBlock Grid.Column="1" Text="{Binding FoodPortions, Converter={StaticResource FoodPortionsToTotalNutrient}, ConverterParameter='Total lipid (fat)', UpdateSourceTrigger=PropertyChanged}"
                                    Style="{StaticResource TextBlockBigBold}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-            <TextBlock Grid.Column="2" Text="{Binding FoodPortions.Carbohydrates, UpdateSourceTrigger=PropertyChanged}"
+            <TextBlock Grid.Column="2" Text="{Binding FoodPortions, Converter={StaticResource FoodPortionsToTotalNutrient}, ConverterParameter='Carbohydrate, by difference', UpdateSourceTrigger=PropertyChanged}"
                                    Style="{StaticResource TextBlockBigBold}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-            <TextBlock Grid.Column="3" Text="{Binding FoodPortions.Protein, UpdateSourceTrigger=PropertyChanged}"
+            <TextBlock Grid.Column="3" Text="{Binding FoodPortions, Converter={StaticResource FoodPortionsToTotalNutrient}, ConverterParameter='Protein', UpdateSourceTrigger=PropertyChanged}"
                                    Style="{StaticResource TextBlockBigBold}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Grid>
 
@@ -59,4 +60,5 @@
                                    Style="{StaticResource TextBlockSmall}"/>
         </Grid>
     </Grid>
+
 </UserControl>

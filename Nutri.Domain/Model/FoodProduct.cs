@@ -1,4 +1,6 @@
-﻿namespace Nutri.Domain.Model;
+﻿using System.Text.Json.Serialization;
+
+namespace Nutri.Domain.Model;
 
 public class FoodProcuct
 {

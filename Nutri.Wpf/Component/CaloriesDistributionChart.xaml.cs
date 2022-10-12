@@ -39,4 +39,9 @@ public partial class CaloriesDistributionChart : UserControl
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyname));
     }
+
+    private void Expander_Expanded(object sender, RoutedEventArgs e)
+    {
+
+    }
 }

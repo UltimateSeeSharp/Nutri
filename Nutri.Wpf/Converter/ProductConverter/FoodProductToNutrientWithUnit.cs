@@ -7,7 +7,7 @@ using System.Windows.Data;
 
 namespace Nutri.Wpf.Converter.ProductConverter;
 
-public class FoodProductToNutrient : IValueConverter
+public class FoodProductToNutrientWithUnit : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
@@ -20,8 +20,9 @@ public class FoodProductToNutrient : IValueConverter
         if (!(parameter is string param))
             return value;
 
-        var amount = nutrients.FirstOrDefault(x => x.Name == param)!.Amount;
-        return Math.Round(amount, 2);
+        var nutrient = nutrients.FirstOrDefault(x => x.Name == param);
+
+        return Math.Round(nutrient.Amount, 2).ToString() + " " + nutrient.Unit;
     }
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

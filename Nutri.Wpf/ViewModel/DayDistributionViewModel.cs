@@ -116,6 +116,10 @@ public class DayDistributionViewModel : BaseViewModel
         }
     };
 
+    public void Loaded()
+    {
+        OnPropertyChanged(nameof(NutritionTable));
+    }
 
     public async Task LoadTodaysFoodPortions()
     {

@@ -68,39 +68,39 @@
                     <StackPanel Grid.Column="1">
 
                         <TextBlock Text="pro 100g" Style="{StaticResource TextBlockBigBoldSmall}" Margin="0 0 0 10"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Fatty acids, total saturated'}" Style="{StaticResource TextBlockSmallList}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Fatty acids, total monounsaturated'}" Style="{StaticResource TextBlockSmallList}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Fatty acids, total polyunsaturated'}" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Fatty acids, total saturated'}" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Fatty acids, total monounsaturated'}" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Fatty acids, total polyunsaturated'}" Style="{StaticResource TextBlockSmallList}"/>
 
                         <TextBlock Text="" Style="{StaticResource TextBlockBigBoldSmall}" Margin="0 15 0 5"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='PUFA 22:6 n-3 (DHA)'}" Style="{StaticResource TextBlockSmallList}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='PUFA 2:5 n-3 (EPA)'}" Style="{StaticResource TextBlockSmallList}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='PUFA 22:5 n-3 (DPA)'}" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='PUFA 22:6 n-3 (DHA)'}" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='PUFA 2:5 n-3 (EPA)'}" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='PUFA 22:5 n-3 (DPA)'}" Style="{StaticResource TextBlockSmallList}"/>
 
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Fatty acids, total saturated'}" Margin="0 15 0 5" Style="{StaticResource TextBlockSmallBoldList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Fatty acids, total saturated'}" Margin="0 15 0 5" Style="{StaticResource TextBlockSmallBoldList}"/>
 
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='SFA 4:0'}" Style="{StaticResource TextBlockSmallList}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='SFA 6:0'}" Style="{StaticResource TextBlockSmallList}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='SFA 8:0'}" Style="{StaticResource TextBlockSmallList}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='SFA 10:0'}" Style="{StaticResource TextBlockSmallList}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='SFA 12:0'}" Style="{StaticResource TextBlockSmallList}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='SFA 14:0'}" Style="{StaticResource TextBlockSmallList}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='SFA 16:0'}" Style="{StaticResource TextBlockSmallList}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='SFA 18:0'}" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='SFA 4:0'}" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='SFA 6:0'}" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='SFA 8:0'}" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='SFA 10:0'}" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='SFA 12:0'}" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='SFA 14:0'}" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='SFA 16:0'}" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='SFA 18:0'}" Style="{StaticResource TextBlockSmallList}"/>
 
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Fatty acids, total monounsaturated'}" Margin="0 15 0 5" Style="{StaticResource TextBlockSmallBoldList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Fatty acids, total monounsaturated'}" Margin="0 15 0 5" Style="{StaticResource TextBlockSmallBoldList}"/>
 
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='MUFA 18:1'}" Style="{StaticResource TextBlockSmallList}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='MUFA 16:1'}" Style="{StaticResource TextBlockSmallList}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='MUFA 20:1'}" Style="{StaticResource TextBlockSmallList}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='MUFA 22:1'}" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='MUFA 18:1'}" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='MUFA 16:1'}" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='MUFA 20:1'}" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='MUFA 22:1'}" Style="{StaticResource TextBlockSmallList}"/>
 
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Fatty acids, total polyunsaturated'}" Margin="0 15 0 5" Style="{StaticResource TextBlockSmallBoldList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Fatty acids, total polyunsaturated'}" Margin="0 15 0 5" Style="{StaticResource TextBlockSmallBoldList}"/>
 
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='PUFA 18:2'}" Style="{StaticResource TextBlockSmallList}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='PUFA 18:3'}" Style="{StaticResource TextBlockSmallList}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='PUFA 20:4'}" Style="{StaticResource TextBlockSmallList}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='PUFA 18:4'}" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='PUFA 18:2'}" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='PUFA 18:3'}" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='PUFA 20:4'}" Style="{StaticResource TextBlockSmallList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='PUFA 18:4'}" Style="{StaticResource TextBlockSmallList}"/>
 
                     </StackPanel>
 
@@ -109,39 +109,39 @@
                     <StackPanel Grid.Column="3" HorizontalAlignment="Right">
 
                         <TextBlock Text="NRV %" Style="{StaticResource TextBlockBigBoldSmall}" Margin="0 0 0 10"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='Fatty acids, total saturated'}" Style="{StaticResource TextBlockSmallBoldList}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='Fatty acids, total monounsaturated'}" Style="{StaticResource TextBlockSmallBoldList}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='Fatty acids, total polyunsaturated'}" Style="{StaticResource TextBlockSmallBoldList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='Fatty acids, total saturated'}" Style="{StaticResource TextBlockSmallBoldList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='Fatty acids, total monounsaturated'}" Style="{StaticResource TextBlockSmallBoldList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='Fatty acids, total polyunsaturated'}" Style="{StaticResource TextBlockSmallBoldList}"/>
 
                         <TextBlock Text="" Style="{StaticResource TextBlockBigBoldSmall}" Margin="0 15 0 5"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='PUFA 22:6 n-3 (DHA)'}" Style="{StaticResource TextBlockSmallBoldList}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='PUFA 2:5 n-3 (EPA)'}" Style="{StaticResource TextBlockSmallBoldList}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='PUFA 22:5 n-3 (DPA)'}" Style="{StaticResource TextBlockSmallBoldList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='PUFA 22:6 n-3 (DHA)'}" Style="{StaticResource TextBlockSmallBoldList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='PUFA 2:5 n-3 (EPA)'}" Style="{StaticResource TextBlockSmallBoldList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='PUFA 22:5 n-3 (DPA)'}" Style="{StaticResource TextBlockSmallBoldList}"/>
 
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='Fatty acids, total saturated'}" Margin="0 15 0 5" Style="{StaticResource TextBlockSmallBoldList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='Fatty acids, total saturated'}" Margin="0 15 0 5" Style="{StaticResource TextBlockSmallBoldList}"/>
 
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='SFA 4:0'}" Style="{StaticResource TextBlockSmallBoldList}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='SFA 6:0'}" Style="{StaticResource TextBlockSmallBoldList}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='SFA 8:0'}" Style="{StaticResource TextBlockSmallBoldList}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='SFA 10:0'}" Style="{StaticResource TextBlockSmallBoldList}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='SFA 12:0'}" Style="{StaticResource TextBlockSmallBoldList}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='SFA 14:0'}" Style="{StaticResource TextBlockSmallBoldList}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='SFA 16:0'}" Style="{StaticResource TextBlockSmallBoldList}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='SFA 18:0'}" Style="{StaticResource TextBlockSmallBoldList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='SFA 4:0'}" Style="{StaticResource TextBlockSmallBoldList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='SFA 6:0'}" Style="{StaticResource TextBlockSmallBoldList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='SFA 8:0'}" Style="{StaticResource TextBlockSmallBoldList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='SFA 10:0'}" Style="{StaticResource TextBlockSmallBoldList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='SFA 12:0'}" Style="{StaticResource TextBlockSmallBoldList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='SFA 14:0'}" Style="{StaticResource TextBlockSmallBoldList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='SFA 16:0'}" Style="{StaticResource TextBlockSmallBoldList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='SFA 18:0'}" Style="{StaticResource TextBlockSmallBoldList}"/>
 
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='Fatty acids, total monounsaturated'}" Margin="0 15 0 5" Style="{StaticResource TextBlockSmallBoldList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='Fatty acids, total monounsaturated'}" Margin="0 15 0 5" Style="{StaticResource TextBlockSmallBoldList}"/>
 
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='MUFA 18:1'}" Style="{StaticResource TextBlockSmallBoldList}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='MUFA 16:1'}" Style="{StaticResource TextBlockSmallBoldList}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='MUFA 20:1'}" Style="{StaticResource TextBlockSmallBoldList}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='MUFA 22:1'}" Style="{StaticResource TextBlockSmallBoldList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='MUFA 18:1'}" Style="{StaticResource TextBlockSmallBoldList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='MUFA 16:1'}" Style="{StaticResource TextBlockSmallBoldList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='MUFA 20:1'}" Style="{StaticResource TextBlockSmallBoldList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='MUFA 22:1'}" Style="{StaticResource TextBlockSmallBoldList}"/>
 
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='Fatty acids, total polyunsaturated'}" Margin="0 15 0 5" Style="{StaticResource TextBlockSmallBoldList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='Fatty acids, total polyunsaturated'}" Margin="0 15 0 5" Style="{StaticResource TextBlockSmallBoldList}"/>
 
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='PUFA 18:2'}" Style="{StaticResource TextBlockSmallBoldList}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='PUFA 18:3'}" Style="{StaticResource TextBlockSmallBoldList}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='PUFA 20:4'}" Style="{StaticResource TextBlockSmallBoldList}"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='PUFA 18:4'}" Style="{StaticResource TextBlockSmallBoldList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='PUFA 18:2'}" Style="{StaticResource TextBlockSmallBoldList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='PUFA 18:3'}" Style="{StaticResource TextBlockSmallBoldList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='PUFA 20:4'}" Style="{StaticResource TextBlockSmallBoldList}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNrvPercent}, ConverterParameter='PUFA 18:4'}" Style="{StaticResource TextBlockSmallBoldList}"/>
 
                     </StackPanel>
                 </Grid>

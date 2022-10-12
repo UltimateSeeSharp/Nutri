@@ -8,6 +8,7 @@
              xmlns:productConverter="clr-namespace:Nutri.Wpf.Converter.ProductConverter"
              xmlns:components="clr-namespace:Nutri.Wpf.Component"
              xmlns:local="clr-namespace:Nutri.Wpf.View"
+             Loaded="UserControl_Loaded"
              mc:Ignorable="d" 
              Background="White"
              
@@ -46,23 +47,23 @@
                           SelectedItem="{Binding SelectedFoodProduct, UpdateSourceTrigger=PropertyChanged}"
                           Style="{StaticResource DataGridDefault}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Nahrungsmittel" Width="5*"
+                        <DataGridTextColumn Header="Nahrungsmittel" Width="7*"
                                             Binding="{Binding Name}"/>
 
                         <DataGridTextColumn Header="Kalorien" Width="2*"
-                                            Binding="{Binding Ingredients, Converter={StaticResource IngredientsCaloriesConverter}, 
-                                            ConverterParameter=Energy}"/>
+                                            Binding="{Binding Nutrients, Converter={StaticResource IngredientsCaloriesConverter}, 
+                                            ConverterParameter='Energy'}"/>
 
                         <DataGridTextColumn Header="Proteine" Width="2*"
-                                            Binding="{Binding Ingredients, Converter={StaticResource IngredientsCaloriesConverter}, 
-                                            ConverterParameter=Protein}"/>
+                                            Binding="{Binding Nutrients, Converter={StaticResource IngredientsCaloriesConverter}, 
+                                            ConverterParameter='Protein'}"/>
 
                         <DataGridTextColumn Header="Kohlenhydrate" Width="2*"
-                                            Binding="{Binding Ingredients, Converter={StaticResource IngredientsCaloriesConverter}, 
+                                            Binding="{Binding Nutrients, Converter={StaticResource IngredientsCaloriesConverter}, 
                                             ConverterParameter='Carbohydrate, by difference'}"/>
 
                         <DataGridTextColumn Header="Fette" Width="2*"
-                                            Binding="{Binding Ingredients, Converter={StaticResource IngredientsCaloriesConverter}, 
+                                            Binding="{Binding Nutrients, Converter={StaticResource IngredientsCaloriesConverter}, 
                                             ConverterParameter='Total lipid (fat)'}"/>
                     </DataGrid.Columns>
                 </DataGrid>
@@ -103,43 +104,54 @@
             </Grid>
         </Border>
 
-        <Border Grid.Column="1" Style="{StaticResource SmoothBorder}" Margin="10 20 20 20">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="100"/>
-                </Grid.RowDefinitions>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="170"/>
+            </Grid.RowDefinitions>
+            
+            <Border Grid.Row="0" Style="{StaticResource SmoothBorder}" Margin="10 20 20 10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
 
-                <Grid Margin="0 0 0 20">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="auto"/>
-                    </Grid.ColumnDefinitions>
+                    <Grid Margin="0 0 0 20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
 
-                    <StackPanel Grid.Column="0" Margin="10 10 0 0">
-                        <TextBlock Text="Heute kosumiert"  Style="{StaticResource TextBlockBigBold}"/>
-                        <StackPanel Orientation="Horizontal" Margin="0 1 0 0">
-                            <TextBlock Text="{Binding TodaysFoodPortions.Value.Count}" Style="{StaticResource TextBlockSmall}"/>
-                            <TextBlock Text=" Produkte" Style="{StaticResource TextBlockSmall}"/>
+                        <StackPanel Grid.Column="0" Margin="10 10 0 0">
+                            <TextBlock Text="Heute kosumiert"  Style="{StaticResource TextBlockBigBold}"/>
+                            <StackPanel Orientation="Horizontal" Margin="0 1 0 0">
+                                <TextBlock Text="{Binding TodaysFoodPortions.Value.Count}" Style="{StaticResource TextBlockSmall}"/>
+                                <TextBlock Text=" Produkte" Style="{StaticResource TextBlockSmall}"/>
+                            </StackPanel>
                         </StackPanel>
-                    </StackPanel>
-                    <TextBox Grid.Column="2" Text="{Binding SearchTextFoodPortions, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Suche ..." Style="{StaticResource TextBoxDefaultEditable}" Width="300" Margin="0 0 0 0" BorderBrush="LightGray"/>
+                        <TextBox Grid.Column="2" Text="{Binding SearchTextFoodPortions, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Suche ..." Style="{StaticResource TextBoxDefaultEditable}" Width="300" Margin="0 0 0 0" BorderBrush="LightGray"/>
+                    </Grid>
+
+                    <DataGrid Grid.Row="1"
+                              ItemsSource="{Binding TodaysFoodPortions.Value, UpdateSourceTrigger=PropertyChanged}"
+                              Style="{StaticResource DataGridDefault}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Nahrungsmittel" Binding="{Binding FoodProduct.Name}" Width="5*"/>
+                            <DataGridTextColumn Header="Zeitpunkt" Binding="{Binding Timestamp, StringFormat=HH:ss}" Width="1*"/>
+                            <DataGridTextColumn Header="Menge" Binding="{Binding Amount}" Width="1*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </Grid>
+            </Border>
 
-                <DataGrid Grid.Row="1"
-                          ItemsSource="{Binding TodaysFoodPortions.Value, UpdateSourceTrigger=PropertyChanged}"
-                          Style="{StaticResource DataGridDefault}">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Nahrungsmittel" Binding="{Binding FoodProduct.Name}" Width="5*"/>
-                        <DataGridTextColumn Header="Zeitpunkt" Binding="{Binding Timestamp, StringFormat=HH:ss}" Width="1*"/>
-                        <DataGridTextColumn Header="Menge" Binding="{Binding Amount}" Width="1*"/>
-                    </DataGrid.Columns>
-                </DataGrid>
+            <Border Grid.Row="1" Style="{StaticResource SmoothBorder}" Margin="10 10 20 20">
+                <components:NutritionTable Grid.Row="1" Margin="0 10 0 5" 
+                                       DataContext="{Binding NutritionTable, UpdateSourceTrigger=PropertyChanged}"/>
+            </Border>
 
-                <components:NutritionTable Grid.Row="2" DataContext="{Binding NutritionTable, UpdateSourceTrigger=PropertyChanged}"/>
-            </Grid>
-        </Border>
+        </Grid>
     </Grid>
 </UserControl>

@@ -21,7 +21,7 @@
     </UserControl.Resources>
 
     <Border Style="{StaticResource SmoothBorder}" Padding="0">
-        <Expander Header="Kalorienverteilung" Style="{StaticResource ExpanderDefault}">
+        <Expander Header="Kalorienverteilung" Style="{StaticResource ExpanderDefault}" IsExpanded="True">
             <Grid>
 
                 <Grid Margin="24,8,24,16" Visibility="{Binding IsFoodProductSeleted, Converter={StaticResource BooleanToVisibilityConverter}}">
@@ -33,7 +33,7 @@
 
                     <StackPanel Grid.Row="0">
                         <TextBlock Text="{Binding FoodProduct.Name}" Style="{StaticResource TextBlockBigBold}" Margin="0 0 0 3"/>
-                        <TextBlock Text="{Binding FoodProduct.Ingredients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Energy'}"/>
+                        <TextBlock Text="{Binding FoodProduct.Nutrients, Converter={StaticResource IngredientsToNutrientAndUnit}, ConverterParameter='Energy'}"/>
                         <Separator Background="LightGray" Margin="0 15 300 0" />
                     </StackPanel>
 
