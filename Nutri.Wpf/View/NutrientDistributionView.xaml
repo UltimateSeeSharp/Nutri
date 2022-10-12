@@ -10,6 +10,7 @@
              xmlns:local="clr-namespace:Nutri.Wpf.View"
              mc:Ignorable="d" 
              Background="White"
+             Loaded="UserControl_Loaded"
              d:DesignHeight="1040" d:DesignWidth="1600">
 
     <Grid>

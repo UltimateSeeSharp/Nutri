@@ -1,28 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Nutri.Wpf.ViewModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace Nutri.Wpf.View
+namespace Nutri.Wpf.View;
+
+public partial class NutrientDistributionView : UserControl
 {
-    /// <summary>
-    /// Interaction logic for NutrientDistributionView.xaml
-    /// </summary>
-    public partial class NutrientDistributionView : UserControl
+    private readonly NutrientDistributionViewModel _nutrientDistributionViewModel;
+
+    public NutrientDistributionView()
     {
-        public NutrientDistributionView()
-        {
-            InitializeComponent();
-        }
+        _nutrientDistributionViewModel = Bootstrapper.Resolve<NutrientDistributionViewModel>();
+
+        InitializeComponent();
+        DataContext = _nutrientDistributionViewModel;
+    }
+
+    private void UserControl_Loaded(object sender, RoutedEventArgs e)
+    {
+        _nutrientDistributionViewModel.Loaded();
     }
 }

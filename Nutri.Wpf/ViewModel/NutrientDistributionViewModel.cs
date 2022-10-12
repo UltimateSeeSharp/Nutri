@@ -24,6 +24,11 @@ public class NutrientDistributionViewModel : BaseViewModel
 
     public MineralsTraceElementsSlider MineralsTraceElementsSlider => new() { FoodPortions = TodaysFoodPortions, NrvList = _nrvService.GetNrvs() };
 
+    public void Loaded()
+    {
+        OnPropertyChanged(nameof(MineralsTraceElementsSlider));
+    }
+
     public async Task LoadTodaysFoodPortions()
     {
         TodaysFoodPortions.Value = await _dayDistributionService.GetTodaysFoodPortionAsync();

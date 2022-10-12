@@ -4,12 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Nutri.Wpf.Component.Slider"
+             xmlns:converter="clr-namespace:Nutri.Wpf.Converter.PortionConverter"
              mc:Ignorable="d" 
              d:Background="White"
              d:DesignHeight="450" d:DesignWidth="800">
 
     <UserControl.Resources>
-
+        <converter:FoodPortionsToNutrientWithUnit x:Key="FoodPortionsToNutrientWithUnit"/>
+        <converter:FoodPortionsToNutrientAmount x:Key="FoodPortionsToNutrientAmount"/>
     </UserControl.Resources>
 
     <StackPanel>
@@ -32,25 +34,25 @@
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Column="0" Text="{Binding FoodPortions, Converter={StaticResource FoodPortionsToNutrientWithUnitConverter}, ConverterParameter='Sodium, Na'}" Style="{StaticResource TextBlockBigBoldSmall}"/>
+                <TextBlock Grid.Column="0" Text="{Binding FoodPortions, Converter={StaticResource FoodPortionsToNutrientWithUnit}, ConverterParameter='Sodium, Na'}" Style="{StaticResource TextBlockBigBoldSmall}"/>
                 <TextBlock Grid.Column="2" Text="3000 mg" Style="{StaticResource TextBlockSmall}"/>
             </Grid>
 
             <TextBlock Grid.Column="0" Grid.Row="0"
-                       Text="Natrium" 
+                       Text="{Binding FoodPortions}" 
                        Style="{StaticResource TextBlockSmall}"/>
 
             <TextBlock Grid.Column="0" Grid.Row="1"
                        Text="2300 mg"
                        Style="{StaticResource TextBlockBigBoldSmall}"/>
 
+
+            <TextBlock Text="{Binding FoodPortions}"/>
             <Slider Grid.Column="1" Grid.Row="1"
-                    Value="{Binding FoodPortions, Converter={StaticResource FoodPortionsToNutrientConverter}, ConverterParameter='Sodium, Na'}"
+                    Value="{Binding FoodPortions, Converter={StaticResource FoodPortionsToNutrientAmount}, ConverterParameter='Sodium, Na'}"
                     Minimum="0" 
                     Maximum="3000"
                     IsSelectionRangeEnabled="True"
-                    SelectionStart="{Binding NrvList, Converter={StaticResource NrvListToRecommendedNrvMinConverter}, ConverterParameter='Sodium, Na'}"
-                    SelectionEnd="{Binding NrvList, Converter={StaticResource NrvListToRecommendedNrvMaxConverter}, ConverterParameter='Sodium, Na'}"
                     Style="{StaticResource MaterialDesignDiscreteSlider}">
                 <Slider.Resources>
                     <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Green" />
