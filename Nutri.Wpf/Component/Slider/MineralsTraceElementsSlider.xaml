@@ -12,53 +12,399 @@
     <UserControl.Resources>
         <converter:FoodPortionsToNutrientWithUnit x:Key="FoodPortionsToNutrientWithUnit"/>
         <converter:FoodPortionsToNutrientAmount x:Key="FoodPortionsToNutrientAmount"/>
+        <converter:FoodPortionsToRecommMaxNutrient x:Key="FoodPortionsToRecommMaxNutrient"/>
+        <converter:FoodPortionsToRecommMinNutrient x:Key="FoodPortionsToRecommMinNutrient"/>
     </UserControl.Resources>
 
-    <StackPanel>
+    <Border Style="{StaticResource SmoothBorder}" Padding="0">
+        <Expander Header="Mineralstoffe &amp; Spurenelemente" Style="{StaticResource ExpanderDefault}">
+            <StackPanel Orientation="Vertical" TextBlock.Foreground="{DynamicResource MaterialDesignBody}" Margin="24,8,24,16">
 
-        <Grid Margin="0 0 0 20">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="3*"/>
-            </Grid.ColumnDefinitions>
+                <TextBlock Text="Mineralstoffe" Style="{StaticResource TextBlockBigBoldSmall}" Margin="0 0 0 20"/>
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-            </Grid.RowDefinitions>
+                <Grid Margin="0 0 0 20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="85"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-            <Grid Grid.Column="1" Margin="0 0 0 10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="auto"/>
-                </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Natrium" Style="{StaticResource TextBlockBigBoldSmall}" Margin="0 0 0 5"/>
 
-                <TextBlock Grid.Column="0" Text="{Binding FoodPortions, Converter={StaticResource FoodPortionsToNutrientWithUnit}, ConverterParameter='Sodium, Na'}" Style="{StaticResource TextBlockBigBoldSmall}"/>
-                <TextBlock Grid.Column="2" Text="3000 mg" Style="{StaticResource TextBlockSmall}"/>
-            </Grid>
+                        <!--Nrv-->
+                        <TextBlock Text="2300 mg" Style="{StaticResource TextBlockSmall}" Margin="0 5 0 0 "/>
+                    </StackPanel>
 
-            <TextBlock Grid.Column="0" Grid.Row="0"
-                       Text="{Binding FoodPortions}" 
-                       Style="{StaticResource TextBlockSmall}"/>
+                    <StackPanel Grid.Column="1" Margin="20 0 0 0">
+                        
+                        <Slider Value="{Binding FoodPortions, ConverterParameter='Sodium, Na', Converter={StaticResource FoodPortionsToNutrientAmount}}"
+                                SelectionStart="{Binding FoodPortions, ConverterParameter='Sodium, Na', Converter={StaticResource FoodPortionsToRecommMinNutrient}}"
+                                SelectionEnd="{Binding FoodPortions, ConverterParameter='Sodium, Na' ,Converter={StaticResource FoodPortionsToRecommMaxNutrient}}"
+                                Minimum="0" Maximum="3000"
+                                IsSelectionRangeEnabled="True"
+                                Margin="0 0 0 5">
+                            <Slider.Resources>
+                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Green" />
+                            </Slider.Resources>
+                        </Slider>
+                        
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Column="0" Grid.Row="1"
-                       Text="2300 mg"
-                       Style="{StaticResource TextBlockBigBoldSmall}"/>
+                            <!--Value-->
+                            <TextBlock Grid.Column="0" Text="{Binding FoodPortions, ConverterParameter='Sodium, Na', Converter={StaticResource FoodPortionsToNutrientWithUnit}}" Style="{StaticResource TextBlockSmall}"/>
 
+                            <!--Max Value-->
+                            <TextBlock Grid.Column="1" Text="3000 mg" Style="{StaticResource TextBlockSmall}"/>
+                        </Grid>
 
-            <TextBlock Text="{Binding FoodPortions}"/>
-            <Slider Grid.Column="1" Grid.Row="1"
-                    Value="{Binding FoodPortions, Converter={StaticResource FoodPortionsToNutrientAmount}, ConverterParameter='Sodium, Na'}"
-                    Minimum="0" 
-                    Maximum="3000"
-                    IsSelectionRangeEnabled="True"
-                    Style="{StaticResource MaterialDesignDiscreteSlider}">
-                <Slider.Resources>
-                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Green" />
-                </Slider.Resources>
-            </Slider>
-        </Grid>
-        
-    </StackPanel>
+                    </StackPanel>
+                </Grid>
+
+                <Grid Margin="0 0 0 20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="85"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Kalium" Style="{StaticResource TextBlockBigBoldSmall}" Margin="0 0 0 5"/>
+
+                        <!--Nrv-->
+                        <TextBlock Text="4700 mg" Style="{StaticResource TextBlockSmall}" Margin="0 5 0 0 "/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Margin="20 0 0 0">
+
+                        <Slider Value="{Binding FoodPortions, ConverterParameter='Potassium, K', Converter={StaticResource FoodPortionsToNutrientAmount}}"
+                                SelectionStart="{Binding FoodPortions, ConverterParameter='Potassium, K', Converter={StaticResource FoodPortionsToRecommMinNutrient}}"
+                                SelectionEnd="{Binding FoodPortions, ConverterParameter='Potassium, K', Converter={StaticResource FoodPortionsToRecommMaxNutrient}}"
+                                Minimum="0" Maximum="6000"
+                                IsSelectionRangeEnabled="True"
+                                Margin="0 0 0 5">
+                            <Slider.Resources>
+                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Green" />
+                            </Slider.Resources>
+                        </Slider>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!--Value-->
+                            <TextBlock Grid.Column="0" Text="{Binding FoodPortions, ConverterParameter='Potassium, K', Converter={StaticResource FoodPortionsToNutrientWithUnit}}" Style="{StaticResource TextBlockSmall}"/>
+
+                            <!--Max Value-->
+                            <TextBlock Grid.Column="1" Text="6000 mg" Style="{StaticResource TextBlockSmall}"/>
+                        </Grid>
+
+                    </StackPanel>
+                </Grid>
+
+                <Grid Margin="0 0 0 20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="85"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Magnesium" Style="{StaticResource TextBlockBigBoldSmall}" Margin="0 0 0 5"/>
+
+                        <!--Nrv-->
+                        <TextBlock Text="420 mg" Style="{StaticResource TextBlockSmall}" Margin="0 5 0 0 "/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Margin="20 0 0 0">
+
+                        <Slider Value="{Binding FoodPortions, ConverterParameter='Magnesium, Mg', Converter={StaticResource FoodPortionsToNutrientAmount}}"
+                                SelectionStart="{Binding FoodPortions, ConverterParameter='Magnesium, Mg', Converter={StaticResource FoodPortionsToRecommMinNutrient}}"
+                                SelectionEnd="{Binding FoodPortions, ConverterParameter='Magnesium, Mg', Converter={StaticResource FoodPortionsToRecommMaxNutrient}}"
+                                Minimum="0" Maximum="600"
+                                IsSelectionRangeEnabled="True"
+                                Margin="0 0 0 5">
+                            <Slider.Resources>
+                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Green" />
+                            </Slider.Resources>
+                        </Slider>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!--Value-->
+                            <TextBlock Grid.Column="0" Text="{Binding FoodPortions, ConverterParameter='Magnesium, Mg', Converter={StaticResource FoodPortionsToNutrientWithUnit}}" Style="{StaticResource TextBlockSmall}"/>
+
+                            <!--Max Value-->
+                            <TextBlock Grid.Column="1" Text="600 mg" Style="{StaticResource TextBlockSmall}"/>
+                        </Grid>
+
+                    </StackPanel>
+                </Grid>
+
+                <Grid Margin="0 0 0 20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="85"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Kalzium" Style="{StaticResource TextBlockBigBoldSmall}" Margin="0 0 0 5"/>
+
+                        <!--Nrv-->
+                        <TextBlock Text="1300 mg" Style="{StaticResource TextBlockSmall}" Margin="0 5 0 0 "/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Margin="20 0 0 0">
+
+                        <Slider Value="{Binding FoodPortions, ConverterParameter='Calcium, Ca', Converter={StaticResource FoodPortionsToNutrientAmount}}"
+                                SelectionStart="{Binding FoodPortions, ConverterParameter='Calcium, Ca', Converter={StaticResource FoodPortionsToRecommMinNutrient}}"
+                                SelectionEnd="{Binding FoodPortions, ConverterParameter='Calcium, Ca', Converter={StaticResource FoodPortionsToRecommMaxNutrient}}"
+                                Minimum="0" Maximum="2000"
+                                IsSelectionRangeEnabled="True"
+                                Margin="0 0 0 5">
+                            <Slider.Resources>
+                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Green" />
+                            </Slider.Resources>
+                        </Slider>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!--Value-->
+                            <TextBlock Grid.Column="0" Text="{Binding FoodPortions, ConverterParameter='Calcium, Ca', Converter={StaticResource FoodPortionsToNutrientWithUnit}}" Style="{StaticResource TextBlockSmall}"/>
+
+                            <!--Max Value-->
+                            <TextBlock Grid.Column="1" Text="2000 mg" Style="{StaticResource TextBlockSmall}"/>
+                        </Grid>
+
+                    </StackPanel>
+                </Grid>
+
+                <Grid Margin="0 0 0 20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="85"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Phosphor" Style="{StaticResource TextBlockBigBoldSmall}" Margin="0 0 0 5"/>
+                        
+                        <!--Nrv-->
+                        <TextBlock Text="1250 mg" Style="{StaticResource TextBlockSmall}" Margin="0 5 0 0 "/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Margin="20 0 0 0">
+
+                        <Slider Value="{Binding FoodPortions, ConverterParameter='Phosphorus, P', Converter={StaticResource FoodPortionsToNutrientAmount}}"
+                                SelectionStart="{Binding FoodPortions, ConverterParameter='Phosphorus, P', Converter={StaticResource FoodPortionsToRecommMinNutrient}}"
+                                SelectionEnd="{Binding FoodPortions, ConverterParameter='Phosphorus, P', Converter={StaticResource FoodPortionsToRecommMaxNutrient}}"
+                                Minimum="0" Maximum="2000"
+                                IsSelectionRangeEnabled="True"
+                                Margin="0 0 0 5">
+                            <Slider.Resources>
+                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Green" />
+                            </Slider.Resources>
+                        </Slider>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!--Value-->
+                            <TextBlock Grid.Column="0" Text="{Binding FoodPortions, ConverterParameter='Phosphorus, P', Converter={StaticResource FoodPortionsToNutrientWithUnit}}" Style="{StaticResource TextBlockSmall}"/>
+
+                            <!--Max Value-->
+                            <TextBlock Grid.Column="1" Text="2000 mg" Style="{StaticResource TextBlockSmall}"/>
+                        </Grid>
+
+                    </StackPanel>
+                </Grid>
+
+                <Separator Margin="0 0 0 20" Background="LightGray"/>
+
+                <TextBlock Text="Spurenelemente" Style="{StaticResource TextBlockBigBoldSmall}" Margin="0 0 0 20"/>
+
+                <Grid Margin="0 0 0 20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="85"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Eisen" Style="{StaticResource TextBlockBigBoldSmall}" Margin="0 0 0 5"/>
+
+                        <!--Nrv-->
+                        <TextBlock Text="18 mg" Style="{StaticResource TextBlockSmall}" Margin="0 5 0 0 "/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Margin="20 0 0 0">
+
+                        <Slider Value="{Binding FoodPortions, ConverterParameter='Iron, Fe', Converter={StaticResource FoodPortionsToNutrientAmount}}"
+                                SelectionStart="{Binding FoodPortions, ConverterParameter='Iron, Fe', Converter={StaticResource FoodPortionsToRecommMinNutrient}}"
+                                SelectionEnd="{Binding FoodPortions, ConverterParameter='Iron, Fe', Converter={StaticResource FoodPortionsToRecommMaxNutrient}}"
+                                Minimum="0" Maximum="30"
+                                IsSelectionRangeEnabled="True"
+                                Margin="0 0 0 5">
+                            <Slider.Resources>
+                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Green" />
+                            </Slider.Resources>
+                        </Slider>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!--Value-->
+                            <TextBlock Grid.Column="0" Text="{Binding FoodPortions, ConverterParameter='Iron, Fe', Converter={StaticResource FoodPortionsToNutrientWithUnit}}" Style="{StaticResource TextBlockSmall}"/>
+
+                            <!--Max Value-->
+                            <TextBlock Grid.Column="1" Text="30 mg" Style="{StaticResource TextBlockSmall}"/>
+                        </Grid>
+
+                    </StackPanel>
+                </Grid>
+
+                <Grid Margin="0 0 0 20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="85"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Kupfer" Style="{StaticResource TextBlockBigBoldSmall}" Margin="0 0 0 5"/>
+
+                        <!--Nrv-->
+                        <TextBlock Text="0,9 mg" Style="{StaticResource TextBlockSmall}" Margin="0 5 0 0 "/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Margin="20 0 0 0">
+
+                        <Slider Value="{Binding FoodPortions, ConverterParameter='Copper, Cu', Converter={StaticResource FoodPortionsToNutrientAmount}}"
+                                SelectionStart="{Binding FoodPortions, ConverterParameter='Copper, Cu', Converter={StaticResource FoodPortionsToRecommMinNutrient}}"
+                                SelectionEnd="{Binding FoodPortions, ConverterParameter='Copper, Cu', Converter={StaticResource FoodPortionsToRecommMaxNutrient}}"
+                                Minimum="0" Maximum="2"
+                                IsSelectionRangeEnabled="True"
+                                Margin="0 0 0 5">
+                            <Slider.Resources>
+                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Green" />
+                            </Slider.Resources>
+                        </Slider>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!--Value-->
+                            <TextBlock Grid.Column="0" Text="{Binding FoodPortions, ConverterParameter='Copper, Cu', Converter={StaticResource FoodPortionsToNutrientWithUnit}}" Style="{StaticResource TextBlockSmall}"/>
+
+                            <!--Max Value-->
+                            <TextBlock Grid.Column="1" Text="2 mg" Style="{StaticResource TextBlockSmall}"/>
+                        </Grid>
+
+                    </StackPanel>
+                </Grid>
+
+                <Grid Margin="0 0 0 20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="85"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Selenium" Style="{StaticResource TextBlockBigBoldSmall}" Margin="0 0 0 5"/>
+
+                        <!--Nrv-->
+                        <TextBlock Text="55 µg" Style="{StaticResource TextBlockSmall}" Margin="0 5 0 0 "/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Margin="20 0 0 0">
+
+                        <Slider Value="{Binding FoodPortions, ConverterParameter='Selenium, Se', Converter={StaticResource FoodPortionsToNutrientAmount}}"
+                                SelectionStart="{Binding FoodPortions, ConverterParameter='Selenium, Se', Converter={StaticResource FoodPortionsToRecommMinNutrient}}"
+                                SelectionEnd="{Binding FoodPortions, ConverterParameter='Selenium, Se', Converter={StaticResource FoodPortionsToRecommMaxNutrient}}"
+                                Minimum="0" Maximum="100"
+                                IsSelectionRangeEnabled="True"
+                                Margin="0 0 0 5">
+                            <Slider.Resources>
+                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Green" />
+                            </Slider.Resources>
+                        </Slider>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!--Value-->
+                            <TextBlock Grid.Column="0" Text="{Binding FoodPortions, ConverterParameter='Selenium, Se', Converter={StaticResource FoodPortionsToNutrientWithUnit}}" Style="{StaticResource TextBlockSmall}"/>
+
+                            <!--Max Value-->
+                            <TextBlock Grid.Column="1" Text="100 µg" Style="{StaticResource TextBlockSmall}"/>
+                        </Grid>
+
+                    </StackPanel>
+                </Grid>
+
+                <Grid Margin="0 0 0 20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="85"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Zink" Style="{StaticResource TextBlockBigBoldSmall}" Margin="0 0 0 5"/>
+
+                        <!--Nrv-->
+                        <TextBlock Text="11 mg" Style="{StaticResource TextBlockSmall}" Margin="0 5 0 0 "/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Margin="20 0 0 0">
+
+                        <Slider Value="{Binding FoodPortions, ConverterParameter='Zinc, Zn', Converter={StaticResource FoodPortionsToNutrientAmount}}"
+                                SelectionStart="{Binding FoodPortions, ConverterParameter='Zinc, Zn', Converter={StaticResource FoodPortionsToRecommMinNutrient}}"
+                                SelectionEnd="{Binding FoodPortions, ConverterParameter='Zinc, Zn', Converter={StaticResource FoodPortionsToRecommMaxNutrient}}"
+                                Minimum="0" Maximum="20"
+                                IsSelectionRangeEnabled="True"
+                                Margin="0 0 0 5">
+                            <Slider.Resources>
+                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Green" />
+                            </Slider.Resources>
+                        </Slider>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!--Value-->
+                            <TextBlock Grid.Column="0" Text="{Binding FoodPortions, ConverterParameter='Zinc, Zn', Converter={StaticResource FoodPortionsToNutrientWithUnit}}" Style="{StaticResource TextBlockSmall}"/>
+
+                            <!--Max Value-->
+                            <TextBlock Grid.Column="1" Text="20 mg" Style="{StaticResource TextBlockSmall}"/>
+                        </Grid>
+
+                    </StackPanel>
+                </Grid>
+
+            </StackPanel>
+        </Expander>
+    </Border>
 </UserControl>

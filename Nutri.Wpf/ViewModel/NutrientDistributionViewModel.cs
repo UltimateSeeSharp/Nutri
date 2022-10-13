@@ -23,10 +23,14 @@ public class NutrientDistributionViewModel : BaseViewModel
     public LazyProperty<List<FoodPortion>> TodaysFoodPortions => _todaysFoodPortions ??= new(GetTodaysFoodPortions);
 
     public MineralsTraceElementsSlider MineralsTraceElementsSlider => new() { FoodPortions = TodaysFoodPortions, NrvList = _nrvService.GetNrvs() };
+    public VitaminsSlider VitaminsSlider => new() { FoodPortions = TodaysFoodPortions, NrvList = _nrvService.GetNrvs() };
+    public NutrientSlider NutrientSlider => new() { FoodPortions = TodaysFoodPortions, NrvList = _nrvService.GetNrvs() };
 
     public void Loaded()
     {
         OnPropertyChanged(nameof(MineralsTraceElementsSlider));
+        OnPropertyChanged(nameof(VitaminsSlider));
+        OnPropertyChanged(nameof(NutrientSlider));
     }
 
     public async Task LoadTodaysFoodPortions()

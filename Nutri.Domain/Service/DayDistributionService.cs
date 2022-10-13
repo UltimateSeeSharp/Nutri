@@ -85,7 +85,7 @@ public class DayDistributionService
         Random r = new();
         var products = _productService.GetFoodProcucts(loadAll: true);
 
-        for (int x = 0; x < 18; x++)
+        for (int x = 0; x < 9; x++)
         {
             FoodPortion foodPortion = new();
             foodPortion.FoodProduct = products[r.Next(0, products.Count - 1)];

@@ -14,10 +14,13 @@ public class FoodPortionsToNutrientWithUnit : IValueConverter
         if (!(value is List<FoodPortion> foodPortions))
             return value;
 
-        var nutrient = foodPortions.Select(x => x.FoodProduct.Nutrients.First(y => y.Name == parameter))?.First();
-        var nutrientSum = foodPortions.Sum(x => x.FoodProduct.Nutrients.First(x => x.Name == parameter).Amount);
+        if (!(parameter is string param))
+            return value;
 
-        return Math.Round(nutrientSum, 2).ToString() + " " + nutrient.Unit;
+        var unit = foodPortions.First().FoodProduct.Nutrients.First(x => x.Name == param).Unit;
+        var sum = foodPortions.Sum(x => x.FoodProduct.Nutrients.First(x => x.Name == param).Amount);
+
+        return Math.Round(sum, 2) + " " + unit;
     }
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

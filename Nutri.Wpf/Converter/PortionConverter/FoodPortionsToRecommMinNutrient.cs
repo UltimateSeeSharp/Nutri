@@ -1,13 +1,13 @@
 ﻿using Nutri.Domain.Model;
-using System;
+using Nutri.Domain.Service;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
+using System;
 using System.Windows.Data;
 
 namespace Nutri.Wpf.Converter.PortionConverter;
 
-public class FoodPortionsToNutrientAmount : IValueConverter
+public class FoodPortionsToRecommMinNutrient : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
@@ -17,9 +17,10 @@ public class FoodPortionsToNutrientAmount : IValueConverter
         if (!(parameter is string param))
             return value;
 
-        var sum = foodPortions.Sum(x => x.FoodProduct.Nutrients.First(x => x.Name == param).Amount);
+        var nrvSerice = Bootstrapper.Resolve<NrvService>();
+        var nrvModel = nrvSerice.GetNrv(param);
 
-        return Math.Round(sum, 2);
+        return nrvModel.Nrv * 0.8;
     }
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
