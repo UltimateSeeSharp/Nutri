@@ -25,4 +25,11 @@ public partial class NutrientSlider : UserControl
         get => (List<FoodPortion>)GetValue(FoodPortionsProperty);
         set => SetValue(FoodPortionsProperty, value);
     }
+
+    public static readonly DependencyProperty UserSettingProperty = DependencyProperty.Register("UserSetting", typeof(UserSetting), typeof(NutrientSlider));
+    public UserSetting UserSetting
+    {
+        get => (UserSetting)GetValue(UserSettingProperty);
+        set => SetValue(UserSettingProperty, value);
+    }
 }
