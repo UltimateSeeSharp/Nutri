@@ -185,7 +185,7 @@
                 <Setter Property="materialDesign:HintAssist.HintOpacity" Value="80" />
             </Style>
 
-            <Style x:Key="IconButton" TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatButton}">
+            <Style x:Key="IconButton" TargetType="Button">
                 <Setter Property="Foreground" Value="White" />
             </Style>
             

@@ -30,39 +30,10 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Grid Margin="0 0 0 10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                    </Grid.ColumnDefinitions>
-
-                    <TextBox Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" BorderBrush="LightGray"
-                             materialDesign:HintAssist.Hint="Suche ..." 
-                             Style="{StaticResource TextBoxDefaultEditable}"/>
-
-                    <Button Grid.Column="1" 
-                            Margin="16 0 0 1"
-                            Content="{materialDesign:PackIcon PlusCircleOutline}"
-                            Height="50"
-                            ToolTip="Hinzufügen"
-                            Style="{StaticResource IconButton}"/>
-
-                    <Button Grid.Column="2" 
-                            Margin="16 0 0 1"
-                            Content="{materialDesign:PackIcon PencilOutline}"
-                            Height="50"
-                            ToolTip="Bearbeiten"
-                            Style="{StaticResource IconButton}"/>
-
-                    <Button Grid.Column="3" 
-                            Margin="16 0 0 1"
-                            Content="{materialDesign:PackIcon TrashCanOutline}"
-                            Height="50"
-                            ToolTip="Bearbeiten"
-                            Style="{StaticResource IconButton}"/>
-                </Grid>
+                <TextBox Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" BorderBrush="LightGray"
+                         materialDesign:HintAssist.Hint="Suche ..." 
+                         Margin="0 0 0 10"
+                         Style="{StaticResource TextBoxDefaultEditable}"/>
 
                 <ProgressBar Grid.Row="1" Width="100"
                              IsIndeterminate="{Binding FoodProcucts.IsLoading}"
