@@ -4,12 +4,12 @@ namespace Nutri.Domain.Model;
 
 public class UserSetting
 {
-    public UserSetting(string name, DateTime birthday, double weight, double caloriesUsageRest)
+    public UserSetting(string name, DateTime birthday, double weight, NutrientProfile nutrientProfile)
     {
         Name = name;
         Birthday = birthday;
         Weight = weight;
-        CaloriesUsageRest = caloriesUsageRest;
+        NutrientProfile = nutrientProfile;
     }
 
     public string Name { get; set; }
@@ -18,7 +18,7 @@ public class UserSetting
 
     public double Weight { get; set; } 
 
-    public double CaloriesUsageRest { get; set; }
-
     public double WaterNeeds => Weight * 35;
+
+    public NutrientProfile NutrientProfile { get; set; }
 }

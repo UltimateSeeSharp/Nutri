@@ -3,6 +3,7 @@ using Nutri.Domain.Service;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Windows.Data;
 
 namespace Nutri.Wpf.Converter.PortionConverter;
@@ -17,10 +18,19 @@ public class FoodPortionsToRecommMaxNutrientWithUnit : IValueConverter
         if (!(parameter is string param))
             return value;
 
-        var nrvSerice = Bootstrapper.Resolve<NrvService>();
-        var nrvModel = nrvSerice.GetNrv(param);
+        double result = 0;
 
-        return nrvModel.Nrv * 1.2 + " " + nrvModel.Unit;
+        if (param == "Energy")
+        {
+            result = foodPortions.Sum(x => x.FoodProduct.Nutrients.First(x => x.Name == "Energy").Amount);
+            return Math.Round(result * 1.2) + " kcal";
+        }
+        else
+        {
+            var nrvSerice = Bootstrapper.Resolve<NrvService>();
+            var nrvModel = nrvSerice.GetNrv(param);
+            return nrvModel.Nrv * 1.2 + nrvModel.Unit;
+        }
     }
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

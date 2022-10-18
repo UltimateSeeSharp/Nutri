@@ -8,7 +8,7 @@ public class UserService
 
     public UserService()
     {
-        _userSettings.Add(new("David", new DateTime(2003, 4, 13), 73, 2000));
+        _userSettings.Add(new("David", new DateTime(2003, 4, 13), 73, new() { RecCalories = 2000 }));
     }
 
     public UserSetting CurrentUserSetting => _userSettings.First();

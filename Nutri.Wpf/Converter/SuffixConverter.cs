@@ -8,10 +8,13 @@ public class SuffixConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        if (!(value is double val))
+        if (!(parameter is string param))
             return value;
 
-        if (!(parameter is string param))
+        if (value is int intValue)
+            return intValue.ToString() + param;
+
+        if (!(value is double val))
             return value;
 
         return val + " " + param;
