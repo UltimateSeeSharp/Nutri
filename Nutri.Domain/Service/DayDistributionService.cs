@@ -90,7 +90,7 @@ public class DayDistributionService
             FoodPortion foodPortion = new();
             foodPortion.FoodProduct = products[r.Next(0, products.Count - 1)];
             foodPortion.Amount = r.Next(80, 100);
-            foodPortion.Timestamp = DateTime.Now.AddHours(r.Next(-4, 12));
+            foodPortion.Timestamp = DateTime.Now.AddHours(r.Next(-14, 0));
 
             Add(foodPortion);
         }

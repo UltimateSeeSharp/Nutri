@@ -38,6 +38,7 @@ internal static class Bootstrapper
         builder.RegisterType<DayDistributionService>().SingleInstance();
 
         builder.RegisterType<GraphService>().SingleInstance();
+        builder.RegisterType<FoodPortionService>().SingleInstance();
 
         return builder;
     }
