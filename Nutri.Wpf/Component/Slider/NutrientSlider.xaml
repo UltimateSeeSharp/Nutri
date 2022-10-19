@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Nutri.Wpf.Component.Slider"
              xmlns:PortionConverter="clr-namespace:Nutri.Wpf.Converter.PortionConverter"
+             xmlns:livecharts="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              xmlns:converter="clr-namespace:Nutri.Wpf.Converter"
              mc:Ignorable="d" 
              d:Background="White"
@@ -23,6 +24,8 @@
         <Expander Header="Nährwerte" IsExpanded="True" Style="{StaticResource ExpanderDefault}">
             <StackPanel Orientation="Vertical" TextBlock.Foreground="{DynamicResource MaterialDesignBody}" Margin="24,8,24,16">
 
+                
+                
                 <Grid Margin="0 0 0 20">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="95"/>
@@ -41,7 +44,7 @@
                         <Slider Value="{Binding FoodPortions, ConverterParameter='Energy', Converter={StaticResource FoodPortionsToNutrientAmount}}"
                                 SelectionStart="{Binding FoodPortions, ConverterParameter='Energy', Converter={StaticResource FoodPortionsToRecommMinNutrient}}"
                                 SelectionEnd="{Binding FoodPortions, ConverterParameter='Energy' ,Converter={StaticResource FoodPortionsToRecommMaxNutrient}}"
-                                Minimum="0" Maximum="2500"
+                                Minimum="0" Maximum="3000"
                                 IsSelectionRangeEnabled="True"
                                 Margin="0 0 0 5">
                             <Slider.Resources>
@@ -156,18 +159,18 @@
                     </Grid.ColumnDefinitions>
 
                     <StackPanel Grid.Column="0">
-                        <TextBlock Text="Kalorien" Style="{StaticResource TextBlockBigBoldSmall}" Margin="0 0 0 5"/>
+                        <TextBlock Text="davon Zucker" Style="{StaticResource TextBlockBigBoldSmall}" Margin="0 0 0 5"/>
 
                         <!--Nrv-->
-                        <TextBlock Text="1,5 mg" Style="{StaticResource TextBlockSmall}" Margin="0 5 0 0 "/>
+                        <TextBlock Text="36 g" Style="{StaticResource TextBlockSmall}" Margin="0 5 0 0 "/>
                     </StackPanel>
 
                     <StackPanel Grid.Column="1" Margin="20 0 0 0">
 
-                        <Slider Value="{Binding FoodPortions, ConverterParameter='Thiamin', Converter={StaticResource FoodPortionsToNutrientAmount}}"
-                                SelectionStart="{Binding FoodPortions, ConverterParameter='Thiamin', Converter={StaticResource FoodPortionsToRecommMinNutrient}}"
-                                SelectionEnd="{Binding FoodPortions, ConverterParameter='Thiamin' ,Converter={StaticResource FoodPortionsToRecommMaxNutrient}}"
-                                Minimum="0" Maximum="3"
+                        <Slider Value="{Binding FoodPortions, ConverterParameter='Sugars, total including NLEA', Converter={StaticResource FoodPortionsToNutrientAmount}}"
+                                SelectionStart="{Binding FoodPortions, ConverterParameter='Sugars, total including NLEA', Converter={StaticResource FoodPortionsToRecommMinNutrient}}"
+                                SelectionEnd="{Binding FoodPortions, ConverterParameter='Sugars, total including NLEA' ,Converter={StaticResource FoodPortionsToRecommMaxNutrient}}"
+                                Minimum="0" Maximum="100"
                                 IsSelectionRangeEnabled="True"
                                 Margin="0 0 0 5">
                             <Slider.Resources>
@@ -182,10 +185,10 @@
                             </Grid.ColumnDefinitions>
 
                             <!--Value-->
-                            <TextBlock Grid.Column="0" Text="{Binding FoodPortions, ConverterParameter='Thiamin', Converter={StaticResource FoodPortionsToNutrientWithUnit}}" Style="{StaticResource TextBlockSmall}"/>
+                            <TextBlock Grid.Column="0" Text="{Binding FoodPortions, ConverterParameter='Sugars, total including NLEA', Converter={StaticResource FoodPortionsToNutrientWithUnit}}" Style="{StaticResource TextBlockSmall}"/>
 
                             <!--Max Value-->
-                            <TextBlock Grid.Column="1" Text="3 mg" Style="{StaticResource TextBlockSmall}"/>
+                            <TextBlock Grid.Column="1" Text="100 g" Style="{StaticResource TextBlockSmall}"/>
                         </Grid>
 
                     </StackPanel>
@@ -198,18 +201,18 @@
                     </Grid.ColumnDefinitions>
 
                     <StackPanel Grid.Column="0">
-                        <TextBlock Text="Kalorien" Style="{StaticResource TextBlockBigBoldSmall}" Margin="0 0 0 5"/>
+                        <TextBlock Text="Proteine" Style="{StaticResource TextBlockBigBoldSmall}" Margin="0 0 0 5"/>
 
                         <!--Nrv-->
-                        <TextBlock Text="1,5 mg" Style="{StaticResource TextBlockSmall}" Margin="0 5 0 0 "/>
+                        <TextBlock Text="65 g" Style="{StaticResource TextBlockSmall}" Margin="0 5 0 0 "/>
                     </StackPanel>
 
                     <StackPanel Grid.Column="1" Margin="20 0 0 0">
 
-                        <Slider Value="{Binding FoodPortions, ConverterParameter='Thiamin', Converter={StaticResource FoodPortionsToNutrientAmount}}"
-                                SelectionStart="{Binding FoodPortions, ConverterParameter='Thiamin', Converter={StaticResource FoodPortionsToRecommMinNutrient}}"
-                                SelectionEnd="{Binding FoodPortions, ConverterParameter='Thiamin' ,Converter={StaticResource FoodPortionsToRecommMaxNutrient}}"
-                                Minimum="0" Maximum="3"
+                        <Slider Value="{Binding FoodPortions, ConverterParameter='Protein', Converter={StaticResource FoodPortionsToNutrientAmount}}"
+                                SelectionStart="{Binding FoodPortions, ConverterParameter='Protein', Converter={StaticResource FoodPortionsToRecommMinNutrient}}"
+                                SelectionEnd="{Binding FoodPortions, ConverterParameter='Protein' ,Converter={StaticResource FoodPortionsToRecommMaxNutrient}}"
+                                Minimum="0" Maximum="150"
                                 IsSelectionRangeEnabled="True"
                                 Margin="0 0 0 5">
                             <Slider.Resources>
@@ -224,10 +227,10 @@
                             </Grid.ColumnDefinitions>
 
                             <!--Value-->
-                            <TextBlock Grid.Column="0" Text="{Binding FoodPortions, ConverterParameter='Thiamin', Converter={StaticResource FoodPortionsToNutrientWithUnit}}" Style="{StaticResource TextBlockSmall}"/>
+                            <TextBlock Grid.Column="0" Text="{Binding FoodPortions, ConverterParameter='Protein', Converter={StaticResource FoodPortionsToNutrientWithUnit}}" Style="{StaticResource TextBlockSmall}"/>
 
                             <!--Max Value-->
-                            <TextBlock Grid.Column="1" Text="3 mg" Style="{StaticResource TextBlockSmall}"/>
+                            <TextBlock Grid.Column="1" Text="150 g" Style="{StaticResource TextBlockSmall}"/>
                         </Grid>
 
                     </StackPanel>
@@ -240,18 +243,18 @@
                     </Grid.ColumnDefinitions>
 
                     <StackPanel Grid.Column="0">
-                        <TextBlock Text="Kalorien" Style="{StaticResource TextBlockBigBoldSmall}" Margin="0 0 0 5"/>
+                        <TextBlock Text="Balaststoffe" Style="{StaticResource TextBlockBigBoldSmall}" Margin="0 0 0 5"/>
 
                         <!--Nrv-->
-                        <TextBlock Text="1,5 mg" Style="{StaticResource TextBlockSmall}" Margin="0 5 0 0 "/>
+                        <TextBlock Text="28 g" Style="{StaticResource TextBlockSmall}" Margin="0 5 0 0 "/>
                     </StackPanel>
 
                     <StackPanel Grid.Column="1" Margin="20 0 0 0">
 
-                        <Slider Value="{Binding FoodPortions, ConverterParameter='Thiamin', Converter={StaticResource FoodPortionsToNutrientAmount}}"
-                                SelectionStart="{Binding FoodPortions, ConverterParameter='Thiamin', Converter={StaticResource FoodPortionsToRecommMinNutrient}}"
-                                SelectionEnd="{Binding FoodPortions, ConverterParameter='Thiamin' ,Converter={StaticResource FoodPortionsToRecommMaxNutrient}}"
-                                Minimum="0" Maximum="3"
+                        <Slider Value="{Binding FoodPortions, ConverterParameter='Fiber, total dietary', Converter={StaticResource FoodPortionsToNutrientAmount}}"
+                                SelectionStart="{Binding FoodPortions, ConverterParameter='Fiber, total dietary', Converter={StaticResource FoodPortionsToRecommMinNutrient}}"
+                                SelectionEnd="{Binding FoodPortions, ConverterParameter='Fiber, total dietary' ,Converter={StaticResource FoodPortionsToRecommMaxNutrient}}"
+                                Minimum="0" Maximum="40"
                                 IsSelectionRangeEnabled="True"
                                 Margin="0 0 0 5">
                             <Slider.Resources>
@@ -266,10 +269,10 @@
                             </Grid.ColumnDefinitions>
 
                             <!--Value-->
-                            <TextBlock Grid.Column="0" Text="{Binding FoodPortions, ConverterParameter='Thiamin', Converter={StaticResource FoodPortionsToNutrientWithUnit}}" Style="{StaticResource TextBlockSmall}"/>
+                            <TextBlock Grid.Column="0" Text="{Binding FoodPortions, ConverterParameter='Fiber, total dietary', Converter={StaticResource FoodPortionsToNutrientWithUnit}}" Style="{StaticResource TextBlockSmall}"/>
 
                             <!--Max Value-->
-                            <TextBlock Grid.Column="1" Text="3 mg" Style="{StaticResource TextBlockSmall}"/>
+                            <TextBlock Grid.Column="1" Text="40 g" Style="{StaticResource TextBlockSmall}"/>
                         </Grid>
 
                     </StackPanel>
