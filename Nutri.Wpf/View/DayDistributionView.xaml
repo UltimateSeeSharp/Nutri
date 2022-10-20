@@ -144,7 +144,7 @@
 
             <Border Grid.Row="1" Style="{StaticResource SmoothBorder}" Margin="10 10 20 20">
                 <components:NutritionTable Grid.Row="1" Margin="0 10 0 5" 
-                                       DataContext="{Binding NutritionTable, UpdateSourceTrigger=PropertyChanged}"/>
+                                              DataContext="{Binding NutritionTable, UpdateSourceTrigger=PropertyChanged}"/>
             </Border>
 
         </Grid>

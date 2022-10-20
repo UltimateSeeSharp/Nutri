@@ -124,6 +124,7 @@ public class DayDistributionViewModel : BaseViewModel
     public async Task LoadTodaysFoodPortions()
     {
         TodaysFoodPortions.Value = await _dayDistributionService.GetTodaysFoodPortionAsync();
+        OnPropertyChanged(nameof(NutritionTable));
     }
 
     public async Task<List<FoodPortion>> GetTodaysFoodPortions(CancellationToken cancellationToken)

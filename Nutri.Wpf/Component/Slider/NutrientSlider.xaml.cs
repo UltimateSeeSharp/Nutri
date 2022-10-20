@@ -15,7 +15,6 @@ public partial class NutrientSlider : UserControl
     public NutrientSlider()
     {
         InitializeComponent();
-        _graphService = Bootstrapper.Resolve<GraphService>();
     }
 
     public static readonly DependencyProperty NrvListProperty = DependencyProperty.Register("NrvList", typeof(List<NrvModel>), typeof(NutrientSlider));
@@ -39,22 +38,5 @@ public partial class NutrientSlider : UserControl
     {
         get => (UserSetting)GetValue(UserSettingProperty);
         set => SetValue(UserSettingProperty, value);
-    }
-
-    public SeriesCollection TodaysCalorieDistributionSeries
-        => FoodPortions is null
-        ? new()
-        : _graphService.CalorieDistributionPiChart(FoodPortions.ToArray());
-
-    private void UserControl_Loaded(object sender, RoutedEventArgs e)
-    {
-        OnPropertyChanged(nameof(TodaysCalorieDistributionSeries));
-    }
-
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-    public void OnPropertyChanged([CallerMemberName] string propertyname = null!)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyname));
     }
 }

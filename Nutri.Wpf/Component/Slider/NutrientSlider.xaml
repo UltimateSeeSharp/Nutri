@@ -8,7 +8,6 @@
              xmlns:livecharts="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              xmlns:converter="clr-namespace:Nutri.Wpf.Converter"
              mc:Ignorable="d" 
-             Loaded="UserControl_Loaded"
              d:Background="White"
              d:DesignHeight="450" d:DesignWidth="800">
 

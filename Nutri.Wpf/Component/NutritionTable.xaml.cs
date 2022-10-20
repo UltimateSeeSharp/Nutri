@@ -1,6 +1,10 @@
-﻿using Nutri.Domain.Model;
+﻿using LiveCharts;
+using Nutri.Domain.Model;
 using Nutri.Wpf._Model;
+using Nutri.Wpf.Service;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -28,5 +32,9 @@ public partial class NutritionTable : UserControl
         }
     }
 
-    public FoodConsumption FoodConsumption => new(FoodPortions);
+    public event PropertyChangedEventHandler? PropertyChanged;
+    public void OnPropertyChanged([CallerMemberName] string propertyname = null!)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyname));
+    }
 }
