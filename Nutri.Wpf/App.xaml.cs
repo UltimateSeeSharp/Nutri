@@ -13,9 +13,9 @@ public partial class App : Application
 
         Bootstrapper.Start();
 
-        //MainWindow = Bootstrapper.Resolve<MainWindow>();
+        MainWindow = Bootstrapper.Resolve<MainWindow>();
         
-        MainWindow = Bootstrapper.Resolve<RegisterUserView>();
+        //MainWindow = Bootstrapper.Resolve<RegisterUserView>();
         MainWindow.Show();
     }
 

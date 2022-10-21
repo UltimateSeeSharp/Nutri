@@ -1,6 +1,7 @@
 ﻿using Nutri.Domain.Model;
 using Nutri.Domain.Service;
 using Nutri.Wpf.Component;
+using Nutri.Wpf.Component.ExpanderList;
 using Nutri.Wpf.Infrastructure;
 using Nutri.Wpf.Service;
 using System;
@@ -41,20 +42,22 @@ public class ProductsViewModel : BaseViewModel
 			OnPropertyChanged(nameof(IsFoodProductSeleted));
 
 			OnPropertyChanged(nameof(CaloriesDistributionChart));
-			OnPropertyChanged(nameof(NutritionTable));
-			OnPropertyChanged(nameof(FattyAcidTable));
-			OnPropertyChanged(nameof(MineralsTraceElementsTable));
-			OnPropertyChanged(nameof(VitaminsTable));
-			OnPropertyChanged(nameof(OtherTable));
+			OnPropertyChanged(nameof(NutritionExpander));
+			OnPropertyChanged(nameof(FattyAcidExpander));
+			OnPropertyChanged(nameof(MineralsTraceElementsExpander));
+			OnPropertyChanged(nameof(VitaminsExpander));
+			OnPropertyChanged(nameof(OtherExpander));
+			OnPropertyChanged(nameof(AntioxidantExpander));
 		}
 	}
 
 	public CaloriesDistributionChart CaloriesDistributionChart => new() { FoodProduct = SelectedFoodProduct! };
-    public NutrientTable? NutritionTable => new() { FoodProduct = SelectedFoodProduct! };
-	public FattyAcidTable? FattyAcidTable => new() { FoodProduct = SelectedFoodProduct!, UserSetting = _userService.CurrentUserSetting };
-	public MineralsTraceElementsTable? MineralsTraceElementsTable => new() { FoodProduct = SelectedFoodProduct! };
-	public VitaminsTable? VitaminsTable => new() { FoodProduct = SelectedFoodProduct! };
-	public OtherTable? OtherTable => new() { FoodProduct = SelectedFoodProduct! };
+    public NutritionExpander? NutritionExpander => new() { FoodProduct = SelectedFoodProduct! };
+	public FattyAcidExpander? FattyAcidExpander => new() { FoodProduct = SelectedFoodProduct!, UserSetting = _userService.CurrentUserSetting };
+	public MineralsTraceElementsExpander? MineralsTraceElementsExpander => new() { FoodProduct = SelectedFoodProduct! };
+	public VitaminsExpander? VitaminsExpander => new() { FoodProduct = SelectedFoodProduct! };
+	public AntioxidantExpander? AntioxidantExpander => new() { FoodProduct = SelectedFoodProduct! };
+	public OtherExpander? OtherExpander => new() { FoodProduct = SelectedFoodProduct! };
 
 	public bool IsFoodProductSeleted => SelectedFoodProduct is not null;
 

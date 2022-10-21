@@ -37,7 +37,7 @@
                         <Separator Background="LightGray" Margin="0 15 300 0" />
                     </StackPanel>
 
-                    <livecharts:PieChart Grid.Row="1" Margin="0 30 0 30" Height="280"
+                    <livecharts:PieChart Grid.Row="1" Margin="0 30 0 30" Height="275"
                                          Series="{Binding CalorieDistribution, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 10">
@@ -46,6 +46,9 @@
 
                         <Ellipse Grid.Column="3" Fill="#07d94d" Width="15" Height="15" Margin="15 0 0 0"/>
                         <TextBlock Grid.Column="4" Text="Kohlenhydrate" Margin="10 0 0 0"/>
+
+                        <Ellipse Fill="#8007d94d" Width="15" Height="15" Margin="15 0 0 0"/>
+                        <TextBlock Text="Zucker" Margin="10 0 0 0"/>
 
                         <Ellipse Grid.Column="5" Fill="#26b55b" Width="15" Height="15" Margin="15 0 0 0"/>
                         <TextBlock Grid.Column="6" Text="Fette" Margin="10 0 0 0"/>

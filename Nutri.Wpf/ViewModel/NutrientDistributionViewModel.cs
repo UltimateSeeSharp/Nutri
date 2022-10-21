@@ -30,6 +30,7 @@ public class NutrientDistributionViewModel : BaseViewModel
     public List<FoodPortion> MorningFoodPortions => TodaysFoodPortions.Value is null ? new() : _foodPortionService.GetFoodPortionsDated(TodaysFoodPortions, morning: true);
     public List<FoodPortion> LunchFoodPortions => TodaysFoodPortions.Value is null ? new() : _foodPortionService.GetFoodPortionsDated(TodaysFoodPortions, lunch: true);
     public List<FoodPortion> DinnerFoodPortions => TodaysFoodPortions.Value is null ? new() : _foodPortionService.GetFoodPortionsDated(TodaysFoodPortions, dinner: true);
+    public List<FoodPortion> SnacksFoodPortions => TodaysFoodPortions.Value is null ? new() : _foodPortionService.GetFoodPortionsDated(TodaysFoodPortions, snacks: true);
 
     public NutrientSlider NutrientSlider => new() { FoodPortions = TodaysFoodPortions, NrvList = _nrvService.GetNrvs(), UserSetting = _userService.CurrentUserSetting };
     public MineralsTraceElementsSlider MineralsTraceElementsSlider => new() { FoodPortions = TodaysFoodPortions, NrvList = _nrvService.GetNrvs() };
@@ -44,6 +45,7 @@ public class NutrientDistributionViewModel : BaseViewModel
         OnPropertyChanged(nameof(MorningFoodPortions));
         OnPropertyChanged(nameof(LunchFoodPortions));
         OnPropertyChanged(nameof(DinnerFoodPortions));
+        OnPropertyChanged(nameof(SnacksFoodPortions));
     }
 
     public async Task LoadTodaysFoodPortions()

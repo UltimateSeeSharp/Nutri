@@ -6,6 +6,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:converter="clr-namespace:Nutri.Wpf.Converter"
              xmlns:productConverter="clr-namespace:Nutri.Wpf.Converter.ProductConverter"
+             xmlns:componentsExpander="clr-namespace:Nutri.Wpf.Component.ExpanderList"
              xmlns:components="clr-namespace:Nutri.Wpf.Component"
              xmlns:livecharts="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              xmlns:local="clr-namespace:Nutri.Wpf.View"
@@ -71,11 +72,12 @@
 
         <StackPanel Grid.Column="1" Margin="10 20 20 20">
             <components:CaloriesDistributionChart DataContext="{Binding CaloriesDistributionChart}" Margin="0 0 0 12"/>
-            <components:NutrientTable DataContext="{Binding NutritionTable}" IsExpanded="True" Margin="0 0 0 12"/>
-            <components:FattyAcidTable DataContext="{Binding FattyAcidTable}" Margin="0 0 0 12"/>
-            <components:MineralsTraceElementsTable DataContext="{Binding MineralsTraceElementsTable}" Margin="0 0 0 12"/>
-            <components:VitaminsTable DataContext="{Binding VitaminsTable}" Margin="0 0 0 12"/>
-            <components:OtherTable DataContext="{Binding OtherTable}"/>
+            <componentsExpander:NutritionExpander DataContext="{Binding NutritionExpander}" Margin="0 0 0 12"/>
+            <componentsExpander:FattyAcidExpander DataContext="{Binding FattyAcidExpander}" Margin="0 0 0 12"/>
+            <componentsExpander:MineralsTraceElementsExpander DataContext="{Binding MineralsTraceElementsExpander}" Margin="0 0 0 12"/>
+            <componentsExpander:VitaminsExpander DataContext="{Binding VitaminsExpander}" Margin="0 0 0 12"/>
+            <componentsExpander:AntioxidantExpander DataContext="{Binding AntioxidantExpander}" Margin="0 0 0 12"/>
+            <componentsExpander:OtherExpander DataContext="{Binding OtherExpander}"/>
         </StackPanel>
 
     </Grid>

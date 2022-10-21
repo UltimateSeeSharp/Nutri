@@ -16,7 +16,7 @@ public class DayDistributionService
         Seed();
     }
 
-    public async Task<List<FoodPortion>> GetTodaysFoodPortionAsync(bool allMorning = false, bool allLunch = false, bool allDinner = false, string? search = null)
+    public async Task<List<FoodPortion>> GetTodaysFoodPortionAsync(bool allMorning = false, bool allLunch = false, bool allDinner = false, bool snacks = false, string? search = null)
     {
         return await Task.Factory.StartNew(() =>
         {
@@ -32,18 +32,28 @@ public class DayDistributionService
 
             else if (allMorning)
             {
-                var test = portionsToday.Where(x => x.Timestamp.Hour > 5 && x.Timestamp.Hour < 12).ToList();
+                var test = portionsToday.Where(x => x.Timestamp.Hour > 5 && x.Timestamp.Hour < 11).ToList();
                 return test;
             }
 
             else if (allLunch)
             {
-                var test = portionsToday.Where(x => x.Timestamp.Hour > 12 && x.Timestamp.Hour < 14).ToList();
+                var test = portionsToday.Where(x => x.Timestamp.Hour > 12 && x.Timestamp.Hour < 14 && x.Timestamp.Minute < 30).ToList();
                 return test;
             }
 
             else if (allDinner)
-                return portionsToday.Where(x => x.Timestamp.Hour > 18 && x.Timestamp.Hour <= 20).ToList();
+                return portionsToday.Where(x => x.Timestamp.Hour > 17 && x.Timestamp.Minute > 30 && x.Timestamp.Hour <= 21).ToList();
+
+            else if (snacks)
+                return portionsToday.Where(x 
+                    => x.Timestamp.Hour > 0
+                    && x.Timestamp.Hour < 5
+                    && x.Timestamp.Hour > 11
+                    && x.Timestamp.Hour < 12
+                    && x.Timestamp.Hour > 14 && x.Timestamp.Minute > 30
+                    && x.Timestamp.Hour < 17 && x.Timestamp.Minute > 30
+                    && x.Timestamp.Hour > 21).ToList();
 
             else
                 return new();
@@ -90,7 +100,7 @@ public class DayDistributionService
             FoodPortion foodPortion = new();
             foodPortion.FoodProduct = products[r.Next(0, products.Count - 1)];
             foodPortion.Amount = r.Next(80, 100);
-            foodPortion.Timestamp = DateTime.Now.AddHours(r.Next(-14, 0));
+            foodPortion.Timestamp = DateTime.Now.AddHours(r.Next(-1, 15));
 
             Add(foodPortion);
         }

@@ -135,7 +135,7 @@
                               Style="{StaticResource DataGridDefault}">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Nahrungsmittel" Binding="{Binding FoodProduct.Name}" Width="5*"/>
-                            <DataGridTextColumn Header="Zeitpunkt" Binding="{Binding Timestamp, StringFormat=HH:ss}" Width="1*"/>
+                            <DataGridTextColumn Header="Zeitpunkt" Binding="{Binding Timestamp, StringFormat=HH:mm}" Width="1*"/>
                             <DataGridTextColumn Header="Menge" Binding="{Binding Amount}" Width="1*"/>
                         </DataGrid.Columns>
                     </DataGrid>

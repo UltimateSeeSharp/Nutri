@@ -1,4 +1,5 @@
-﻿using LiveCharts;
+﻿using Autofac.Core;
+using LiveCharts;
 using Nutri.Domain.Model;
 using Nutri.Wpf.Service;
 using System.Collections.Generic;
@@ -12,9 +13,13 @@ namespace Nutri.Wpf.Component.Slider;
 
 public partial class NutrientSlider : UserControl
 {
+    private readonly GraphService _graphService;
+
     public NutrientSlider()
     {
         InitializeComponent();
+
+        _graphService = Bootstrapper.Resolve<GraphService>();
     }
 
     public static readonly DependencyProperty NrvListProperty = DependencyProperty.Register("NrvList", typeof(List<NrvModel>), typeof(NutrientSlider));
@@ -32,11 +37,15 @@ public partial class NutrientSlider : UserControl
     }
 
     public static readonly DependencyProperty UserSettingProperty = DependencyProperty.Register("UserSetting", typeof(UserSetting), typeof(NutrientSlider));
-    private readonly GraphService _graphService;
 
     public UserSetting UserSetting
     {
         get => (UserSetting)GetValue(UserSettingProperty);
         set => SetValue(UserSettingProperty, value);
     }
+
+    public SeriesCollection TodaysCalorieDistributionSeries 
+        => FoodPortions is null 
+        ? new () 
+        : _graphService.CalorieDistributionPiChart(FoodPortions.ToArray());
 }

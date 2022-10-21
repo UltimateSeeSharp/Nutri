@@ -2,16 +2,16 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Nutri.Wpf.Component;
+namespace Nutri.Wpf.Component.ExpanderList;
 
-public partial class OtherTable : UserControl
+public partial class VitaminsExpander : UserControl
 {
-    public OtherTable()
+    public VitaminsExpander()
     {
         InitializeComponent();
     }
 
-    public static readonly DependencyProperty FoodProductProperty = DependencyProperty.Register("FoodProduct", typeof(FoodProcuct), typeof(OtherTable));
+    public static readonly DependencyProperty FoodProductProperty = DependencyProperty.Register("FoodProduct", typeof(FoodProcuct), typeof(VitaminsExpander));
     public FoodProcuct FoodProduct
     {
         get => (FoodProcuct)GetValue(FoodProductProperty);

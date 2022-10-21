@@ -18,6 +18,9 @@
     <None Remove="Fonts\LiebherrText-MediumItalic.otf" />
     <None Remove="Fonts\LiebherrText-Regular.otf" />
     <None Remove="Fonts\LiebherrText-RegularItalic.otf" />
+    <None Remove="Images\sun.png" />
+    <None Remove="Images\sunrise.png" />
+    <None Remove="Images\sunset.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -63,6 +66,15 @@
     </Resource>
     <Resource Include="Fonts\LiebherrText-RegularItalic.otf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\sun.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\sunrise.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\sunset.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 
