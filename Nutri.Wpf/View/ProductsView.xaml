@@ -41,6 +41,15 @@
                              Visibility="{Binding FoodProcucts.IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}"
                              Style="{StaticResource MaterialDesignCircularProgressBar}"/>
 
+                <ListView Grid.Row="1" ItemsSource="{Binding CategoryBoxes}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Margin="0" />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                </ListView>
+
+                <!--
                 <DataGrid Grid.Row="1"
                           Visibility="{Binding FoodProcucts.IsLoading, Converter={StaticResource InverseBooleanToVisibilityConverter}}"
                           ItemsSource="{Binding FoodProcucts.Value, UpdateSourceTrigger=PropertyChanged}"
@@ -67,6 +76,8 @@
                                             ConverterParameter='Total lipid (fat)'}"/>
                     </DataGrid.Columns>
                 </DataGrid>
+                -->
+                
             </Grid>
         </Border>
 

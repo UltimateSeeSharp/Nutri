@@ -59,7 +59,11 @@ public class ProductsViewModel : BaseViewModel
 	public AntioxidantExpander? AntioxidantExpander => new() { FoodProduct = SelectedFoodProduct! };
 	public OtherExpander? OtherExpander => new() { FoodProduct = SelectedFoodProduct! };
 
-	public bool IsFoodProductSeleted => SelectedFoodProduct is not null;
+
+	public List<CategoryBox> CategoryBoxes => new() { new CategoryBox(), new CategoryBox(), new CategoryBox(), new CategoryBox(), new CategoryBox(), new CategoryBox(), new CategoryBox(), new CategoryBox(), new CategoryBox(), new CategoryBox(), new CategoryBox(), new CategoryBox(), new CategoryBox(), new CategoryBox() };
+
+
+    public bool IsFoodProductSeleted => SelectedFoodProduct is not null;
 
 	private string _searchText = String.Empty;
 	public string SearchText
