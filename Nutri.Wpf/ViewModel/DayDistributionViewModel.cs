@@ -1,4 +1,5 @@
-﻿using Nutri.Domain.Model;
+﻿using Nutri.Domain.Enum;
+using Nutri.Domain.Model;
 using Nutri.Domain.Service;
 using Nutri.Wpf.Component;
 using Nutri.Wpf.Infrastructure;
@@ -123,13 +124,13 @@ public class DayDistributionViewModel : BaseViewModel
 
     public async Task LoadTodaysFoodPortions()
     {
-        TodaysFoodPortions.Value = await _dayDistributionService.GetTodaysFoodPortionAsync();
+        TodaysFoodPortions.Value = await _dayDistributionService.GetFoodPortions(Timeframe.Today);
         OnPropertyChanged(nameof(NutritionTable));
     }
 
     public async Task<List<FoodPortion>> GetTodaysFoodPortions(CancellationToken cancellationToken)
     {
-        return await _dayDistributionService.GetTodaysFoodPortionAsync(search: SearchTextFoodPortions);
+        return await _dayDistributionService.GetFoodPortions(Timeframe.Today, search: SearchTextFoodPortions);
     }
 
     public async Task LoadFoodProductsAsync()

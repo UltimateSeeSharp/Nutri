@@ -1,7 +1,7 @@
 ﻿using Nutri.Domain.Enum;
 using Nutri.Domain.Extentions;
 using Nutri.Domain.Model;
-using System.Runtime.CompilerServices;
+using Nutri.Domain.Model.User;
 
 namespace Nutri.Domain.Service;
 
@@ -19,15 +19,12 @@ public class DayDistributionService
         Seed();
     }
 
-    public async Task<List<FoodPortion>> GetFoodPortions(Timeframe timeframe = Timeframe.Total, DayTimeframe? dayTimeframe = null, string? search = null)
+    public async Task<List<FoodPortion>> GetFoodPortions(Timeframe timeframe, EatingHabit? eatingHabit = null, DayTimeframe? dayTimeframe = null, string? search = null)
     {
         return await Task.Factory.StartNew(() =>
         {
             if (timeframe is Timeframe.Total && string.IsNullOrEmpty(search))
                 return _foodPortions;
-
-            if (!string.IsNullOrEmpty(search))
-                return _foodPortions.Where(x => x.FoodProduct.Name.ToLower().Contains(search.ToLower())).ToList();
 
             List<FoodPortion>? portionsInTime = null;
 
@@ -54,45 +51,43 @@ public class DayDistributionService
                     break;
             }
 
-            //switch (dayTimeframe)
-            //{
-            //    case DayTimeframe.Morning:
-            //        portionsInTime = portionsInTime.Where(x => x.Timestamp.Hour > 5)
-            //        break;
-            //
-            //    default:
-            //        break;
-            //}
+            if (dayTimeframe is null || eatingHabit is null)
+                return portionsInTime;
+
+            List<FoodPortion> todaysPortions = _foodPortions.Where(x => x.Timestamp.IsToday()).ToList();
+
+            switch (dayTimeframe)
+            {
+                case DayTimeframe.Morning:
+                    portionsInTime = portionsInTime.Where(x => x.Timestamp.Hour > eatingHabit.MorningStart && x.Timestamp.Hour < eatingHabit.MorningStop).ToList();
+                    break;
+
+                case DayTimeframe.Lunch:
+                    portionsInTime = portionsInTime.Where(x => x.Timestamp.Hour > eatingHabit.LunchStart && x.Timestamp.Hour < eatingHabit.LunchStop).ToList();
+                    break;
+
+                case DayTimeframe.Dinner:
+                    portionsInTime = portionsInTime.Where(x => x.Timestamp.Hour > eatingHabit.DinnerStart && x.Timestamp.Hour < eatingHabit.DinnerStop).ToList();
+                    break;
+
+                case DayTimeframe.Other:
+                    List<FoodPortion> mainMealfoodPortions = new();
+                    mainMealfoodPortions.AddRange(portionsInTime.Where(x => x.Timestamp.Hour > eatingHabit.MorningStart && x.Timestamp.Hour < eatingHabit.MorningStop).ToList());
+                    mainMealfoodPortions.AddRange(portionsInTime.Where(x => x.Timestamp.Hour > eatingHabit.LunchStart && x.Timestamp.Hour < eatingHabit.LunchStop).ToList());
+                    mainMealfoodPortions.AddRange(portionsInTime.Where(x => x.Timestamp.Hour > eatingHabit.DinnerStart && x.Timestamp.Hour < eatingHabit.DinnerStop).ToList());
+
+                    mainMealfoodPortions.ForEach(x => todaysPortions.Remove(x));
+                    portionsInTime = mainMealfoodPortions;
+                    break;
+
+                default:
+                    break;
+            }
+
+            if (!string.IsNullOrEmpty(search))
+                return portionsInTime.Where(x => x.FoodProduct.Name.ToLower().Contains(search.ToLower())).ToList();
 
             return portionsInTime;
-
-            //else if (allMorning)
-            //{
-            //    var test = portions.Where(x => x.Timestamp.Hour > 5 && x.Timestamp.Hour < 11).ToList();
-            //    return test;
-            //}
-
-//            //else if (allLunch)
-            //{
-            //    var test = portions.Where(x => x.Timestamp.Hour > 12 && x.Timestamp.Hour < 14 && x.Timestamp.Minute < 30).ToList();
-            //    return test;
-            //}
-
-//            //else if (allDinner)
-            //    return portions.Where(x => x.Timestamp.Hour > 17 && x.Timestamp.Minute > 30 && x.Timestamp.Hour <= 21).ToList();
-
-//            //else if (snacks)
-            //    return portions.Where(x
-            //        => x.Timestamp.Hour > 0
-            //        && x.Timestamp.Hour < 5
-            //        && x.Timestamp.Hour > 11
-            //        && x.Timestamp.Hour < 12
-            //        && x.Timestamp.Hour > 14 && x.Timestamp.Minute > 30
-            //        && x.Timestamp.Hour < 17 && x.Timestamp.Minute > 30
-            //        && x.Timestamp.Hour > 21).ToList();
-
-//            //else
-            //    return new();
         });
     }
 

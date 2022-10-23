@@ -2,9 +2,9 @@
 using Nutri.Domain.Service;
 using Nutri.Wpf.Service;
 using Nutri.Wpf.View;
-using Microsoft.Extensions.Configuration;
 using Nutri.Wpf.ViewModel;
 using Nutri.Wpf.Model;
+using Microsoft.Extensions.Configuration;
 
 namespace Nutri.Wpf;
 
@@ -30,8 +30,7 @@ internal static class Bootstrapper
 
     private static ContainerBuilder Config(this ContainerBuilder builder)
     {
-        var configBuilder = new ConfigurationBuilder()
-            .AddJsonFile("appsettings.json", false);
+        var configBuilder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
 
         var config = configBuilder.Build();
 
