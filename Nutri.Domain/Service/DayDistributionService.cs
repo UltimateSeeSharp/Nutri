@@ -19,7 +19,7 @@ public class DayDistributionService
         Seed();
     }
 
-    public async Task<List<FoodPortion>> GetFoodPortions(Timeframe timeframe, DayTimeframe? dayTimeframe = null, string? search = null)
+    public async Task<List<FoodPortion>> GetFoodPortions(Timeframe timeframe = Timeframe.Total, DayTimeframe? dayTimeframe = null, string? search = null)
     {
         return await Task.Factory.StartNew(() =>
         {
@@ -33,13 +33,36 @@ public class DayDistributionService
 
             switch (timeframe)
             {
-                case Timeframe.Day:
+                case Timeframe.Today:
                     portionsInTime = _foodPortions.Where(x => x.Timestamp.IsToday()).ToList();
                     break;
 
-                case Timeframe.Week:
-                    portionsInTime = _foodPortions.Where(x => x.Timestamp.IsthisWeek()).ToList();
+                case Timeframe.Last7Days:
+                    portionsInTime = _foodPortions.Where(x => x.Timestamp.IsLast7Days()).ToList();
+                    break;
+
+                case Timeframe.ThisMonth:
+                    portionsInTime = _foodPortions.Where(x => x.Timestamp.IsThisMonth()).ToList();
+                    break;
+
+                case Timeframe.ThisYear:
+                    portionsInTime = _foodPortions.Where(x => x.Timestamp.IsThisYear()).ToList();
+                    break;
+
+                default:
+                    portionsInTime = _foodPortions;
+                    break;
             }
+
+            //switch (dayTimeframe)
+            //{
+            //    case DayTimeframe.Morning:
+            //        portionsInTime = portionsInTime.Where(x => x.Timestamp.Hour > 5)
+            //        break;
+            //
+            //    default:
+            //        break;
+            //}
 
             return portionsInTime;
 

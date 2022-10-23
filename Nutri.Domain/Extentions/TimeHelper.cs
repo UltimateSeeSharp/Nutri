@@ -1,4 +1,6 @@
-﻿namespace Nutri.Domain.Extentions;
+﻿using System.Globalization;
+
+namespace Nutri.Domain.Extentions;
 
 public static class TimeHelper
 {
@@ -23,10 +25,12 @@ public static class TimeHelper
             return false;
     }
 
-    public static bool IsThisWeek(this DateTime time)
+    public static bool IsLast7Days(this DateTime time)
     {
-        if (!(time.IsThisYear()))
-            return false;
+        if (time >= DateTime.Now.AddDays(-7))
+            return true;
+
+        return false;
     }
 
     public static bool IsToday(this DateTime time)

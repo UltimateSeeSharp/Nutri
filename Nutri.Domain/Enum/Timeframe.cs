@@ -2,9 +2,9 @@
 
 public enum Timeframe
 {
-    Day,
-    Week,
-    Month,
-    Year,
+    Today,
+    Last7Days,
+    ThisMonth,
+    ThisYear,
     Total
 }

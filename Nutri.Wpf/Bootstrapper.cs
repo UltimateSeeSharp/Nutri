@@ -2,7 +2,9 @@
 using Nutri.Domain.Service;
 using Nutri.Wpf.Service;
 using Nutri.Wpf.View;
+using Microsoft.Extensions.Configuration;
 using Nutri.Wpf.ViewModel;
+using Nutri.Wpf.Model;
 
 namespace Nutri.Wpf;
 
@@ -19,11 +21,30 @@ internal static class Bootstrapper
         builder.RegisterUi();
         builder.RegisterServices();
         builder.RegisterStuff();
+        builder.Config();
 
         _container = builder.Build();
     }
 
     internal static void Stop() => _container?.Dispose();
+
+    private static ContainerBuilder Config(this ContainerBuilder builder)
+    {
+        var configBuilder = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json", false);
+
+        var config = configBuilder.Build();
+
+        builder.Register(x =>
+        {
+            var c = new AppSettings();
+            config.GetSection(nameof(AppSettings)).Bind(c);
+            return c;
+        });
+        builder.RegisterInstance(config).AsImplementedInterfaces();
+
+        return builder;
+    }
 
     private static ContainerBuilder RegisterStuff(this ContainerBuilder builder)
     {
