@@ -60,6 +60,8 @@
                 </StackPanel>
             </TabItem.Header>
 
+            <views:StatisticsView/>
+
         </TabItem>
 
     </TabControl>

@@ -42,9 +42,6 @@
 
                         <TextBlock Grid.Column="0" Text="Morgen   05:00 - 11:00" Style="{StaticResource TextBlockBigBold}" HorizontalAlignment="Center" FontSize="16" Margin="10 5 0 10"/>
 
-                        <Image Grid.Column="2" Height="50" 
-                               Source="pack://application:,,,/Images/sunrise.png"/>
-
                     </Grid>
 
                     <DataGrid ItemsSource="{Binding MorningFoodPortions}"
@@ -71,8 +68,6 @@
 
                         <TextBlock Grid.Column="0" Text="Mittag   12:00 - 14:00" Style="{StaticResource TextBlockBigBold}" HorizontalAlignment="Center" FontSize="16" Margin="10 5 0 10"/>
 
-                        <Image Grid.Column="2" Height="50" 
-                               Source="pack://application:,,,/Images/sun.png"/>
 
                     </Grid>
 
@@ -100,9 +95,6 @@
                         </Grid.ColumnDefinitions>
 
                         <TextBlock Grid.Column="0" Text="Abend   18:00 - 21:00" Style="{StaticResource TextBlockBigBold}" HorizontalAlignment="Center" FontSize="16" Margin="10 5 0 10"/>
-
-                        <Image Grid.Column="2" Height="50" 
-                               Source="pack://application:,,,/Images/sunset.png"/>
 
                     </Grid>
 
