@@ -1,6 +1,6 @@
-﻿using Nutri.Wpf.Infrastructure;
+﻿using LiveCharts;
+using Nutri.Wpf.Infrastructure;
 using Nutri.Wpf.Model;
-using System.Security.Policy;
 
 namespace Nutri.Wpf.ViewModel;
 
@@ -12,6 +12,8 @@ public class StatisticsViewModel : BaseViewModel
 	{
         _appSettings = appSettings;
     }
+
+    public SeriesCollection xCaloriesConsumpHistory;
 
     public void Laoded()
     {

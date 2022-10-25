@@ -125,14 +125,17 @@ public class DayDistributionService
         Random r = new();
         var products = _productService.GetFoodProcucts(loadAll: true);
 
-        for (int x = 0; x < 9; x++)
+        for (int i = 0; i < 365; i++)
         {
-            FoodPortion foodPortion = new();
-            foodPortion.FoodProduct = products[r.Next(0, products.Count - 1)];
-            foodPortion.Amount = r.Next(80, 100);
-            foodPortion.Timestamp = DateTime.Now.AddHours(r.Next(-1, 15));
+            for (int x = 0; x < 9; x++)
+            {
+                FoodPortion foodPortion = new();
+                foodPortion.FoodProduct = products[r.Next(0, products.Count - 1)];
+                foodPortion.Amount = r.Next(80, 100);
+                foodPortion.Timestamp = DateTime.Now.AddDays(-i).AddHours(r.Next(-1, 15));
 
-            Add(foodPortion);
+                Add(foodPortion);
+            }
         }
     }
 }
