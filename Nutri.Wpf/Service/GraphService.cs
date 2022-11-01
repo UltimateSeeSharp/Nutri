@@ -33,7 +33,7 @@ public class GraphService
             {
                 case Timeframe.Last7Days:
 
-                    var portionsInTime = portions.Where(x => x.Timestamp.Date == DateTime.Now.AddDays(-5)).ToList();
+                    var portionsInTime = portions.Where(x => x.Timestamp.Date == DateTime.Now.AddDays(-6).Date).ToList();
 
                     var test = GetSumOfNutrient(portions, nutrientName);
 
