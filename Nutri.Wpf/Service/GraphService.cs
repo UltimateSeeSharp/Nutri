@@ -7,8 +7,10 @@ using Nutri.Domain.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using System.Windows.Threading;
 
 namespace Nutri.Wpf.Service;
 
@@ -21,57 +23,51 @@ public class GraphService
         _dayDistrbutionService = dayDistrbutionService;
     }
 
-    public async Task<SeriesCollection> GetNutrientHistory(string nutrientName, Timeframe timeframe, DayTimeframe? dayTimeFrame = null)
+    public SeriesCollection GetNutrientHistory(List<FoodPortion> foodPortions, string nutrientName, Timeframe timeframe, DayTimeframe? dayTimeFrame = null)
     {
-        return await Task.Factory.StartNew(() =>
+        SeriesCollection? caloriesHistory = new();
+
+        switch (timeframe)
         {
-            SeriesCollection caloriesHistory = new();
+            case Timeframe.Last7Days:
 
-            var portions = _dayDistrbutionService.GetFoodPortions(timeframe).Result;
+                var portionsInTime = foodPortions.Where(x => x.Timestamp.Date == DateTime.Now.AddDays(-6).Date).ToList();
 
-            switch (timeframe)
-            {
-                case Timeframe.Last7Days:
+                LineSeries lineSeries = new()
+                {
+                    Values = new ChartValues<double>()
+                        {
+                            GetSumOfNutrient(foodPortions.Where(x => x.Timestamp.Date == DateTime.Now.AddDays(-6).Date).ToList(), nutrientName),
+                            GetSumOfNutrient(foodPortions.Where(x => x.Timestamp.Date == DateTime.Now.AddDays(-5).Date).ToList(), nutrientName),
+                            GetSumOfNutrient(foodPortions.Where(x => x.Timestamp.Date == DateTime.Now.AddDays(-4).Date).ToList(), nutrientName),
+                            GetSumOfNutrient(foodPortions.Where(x => x.Timestamp.Date == DateTime.Now.AddDays(-3).Date).ToList(), nutrientName),
+                            GetSumOfNutrient(foodPortions.Where(x => x.Timestamp.Date == DateTime.Now.AddDays(-2).Date).ToList(), nutrientName),
+                            GetSumOfNutrient(foodPortions.Where(x => x.Timestamp.Date == DateTime.Now.AddDays(-1).Date).ToList(), nutrientName),
+                            GetSumOfNutrient(foodPortions.Where(x => x.Timestamp.Date == DateTime.Now.Date).ToList(), nutrientName),
+                        }
+                };
+                break;
 
-                    var portionsInTime = portions.Where(x => x.Timestamp.Date == DateTime.Now.AddDays(-6).Date).ToList();
+            case Timeframe.ThisMonth:
+                break;
+            case Timeframe.ThisYear:
+                break;
+            case Timeframe.Total:
+                break;
+            case Timeframe.Today:
+                break;
+            default:
+                break;
 
-                    var test = GetSumOfNutrient(portions, nutrientName);
+                caloriesHistory.Add(lineSeries);
+        }
 
+        double GetSumOfNutrient(List<FoodPortion> foodPortions, string nutrientName)
+            => foodPortions is not null
+            ? foodPortions.Sum(x => x.FoodProduct.Nutrients.First(x => x.Name == nutrientName).Amount)
+            : 0;
 
-                    //caloriesHistory.Add(new LineSeries()
-                    //{
-                    //    Values = new ChartValues<double>()
-                    //    {
-                    //        GetSumOfNutrient(foodPortions.Where(x => x.Timestamp.Date == DateTime.Now.AddDays(-6).Date).ToList(), nutrientName),
-                    //        GetSumOfNutrient(foodPortions.Where(x => x.Timestamp.Date == DateTime.Now.AddDays(-5).Date).ToList(), nutrientName),
-                    //        GetSumOfNutrient(foodPortions.Where(x => x.Timestamp.Date == DateTime.Now.AddDays(-4).Date).ToList(), nutrientName),
-                    //        GetSumOfNutrient(foodPortions.Where(x => x.Timestamp.Date == DateTime.Now.AddDays(-3).Date).ToList(), nutrientName),
-                    //        GetSumOfNutrient(foodPortions.Where(x => x.Timestamp.Date == DateTime.Now.AddDays(-2).Date).ToList(), nutrientName),
-                    //        GetSumOfNutrient(foodPortions.Where(x => x.Timestamp.Date == DateTime.Now.AddDays(-1).Date).ToList(), nutrientName),
-                    //        GetSumOfNutrient(foodPortions.Where(x => x.Timestamp.Date == DateTime.Now.Date).ToList(), nutrientName),
-                    //    }
-                    //});
-                    break;
-
-                case Timeframe.ThisMonth:
-                    break;
-                case Timeframe.ThisYear:
-                    break;
-                case Timeframe.Total:
-                    break;
-                case Timeframe.Today:
-                    break;
-                default:
-                    break;
-            }
-
-            double GetSumOfNutrient(List<FoodPortion> foodPortions, string nutrientName) 
-                => foodPortions is not null 
-                ?  foodPortions.Sum(x => x.FoodProduct.Nutrients.First(x => x.Name == nutrientName).Amount)
-                : 0;
-
-            return caloriesHistory;
-        });
+        return caloriesHistory;
     }
 
     public SeriesCollection CalorieDistributionPiChart(params FoodProcuct[] foodProcuct)

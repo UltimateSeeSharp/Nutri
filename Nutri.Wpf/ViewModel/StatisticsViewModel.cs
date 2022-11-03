@@ -1,13 +1,9 @@
 ﻿using LiveCharts;
-using Microsoft.Extensions.Primitives;
 using Nutri.Domain.Enum;
-using Nutri.Domain.Model;
 using Nutri.Domain.Service;
 using Nutri.Wpf.Infrastructure;
 using Nutri.Wpf.Model;
 using Nutri.Wpf.Service;
-using System.Collections.Generic;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Nutri.Wpf.ViewModel;
@@ -25,17 +21,17 @@ public class StatisticsViewModel : BaseViewModel
         _appSettings = appSettings;
     }
 
-    private LazyProperty<SeriesCollection>? _caloriesConsumpHistory = null;
-    public LazyProperty<SeriesCollection> CaloriesConsumpHistory => _caloriesConsumpHistory ??= new(GetCaloriesConsumpHistory);
+    public SeriesCollection CaloriesConsumpHistory { get; set; }
 
-    public void Laoded()
+    public async Task Laoded()
     {
-        OnPropertyChanged(nameof(CaloriesConsumpHistory));
+        await Task.Run(SetCaloriesConsumpHistory);
     }
 
-    private async Task<SeriesCollection> GetCaloriesConsumpHistory(CancellationToken cancellationToken)
+    private async Task SetCaloriesConsumpHistory()
     {
-        var portions = await _dayDistributionService.GetFoodPortions(Timeframe.Today);
-        return await _graphService.GetNutrientHistory("Energy", Timeframe.Last7Days);
+        var portions = await _dayDistributionService.GetFoodPortions(Timeframe.Last7Days);
+        CaloriesConsumpHistory = _graphService.GetNutrientHistory(portions, "Energy", Timeframe.Last7Days);
+        OnPropertyChanged(nameof(CaloriesConsumpHistory));
     }
 }
