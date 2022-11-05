@@ -23,7 +23,9 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <lvc:CartesianChart Grid.Row="0" Series="{Binding CaloriesConsumpHistory, UpdateSourceTrigger=PropertyChanged}"/>
+                <lvc:CartesianChart Grid.Row="0" Series="{Binding ConsumptionHistory.Value, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <lvc:CartesianChart Grid.Row="1" DataContext="{Binding ConsumptionHistory.Value, UpdateSourceTrigger=PropertyChanged}"/>
 
             </Grid>
         </Border>

@@ -1,9 +1,11 @@
 ﻿using LiveCharts;
+using LiveCharts.Wpf;
 using Nutri.Domain.Enum;
 using Nutri.Domain.Service;
 using Nutri.Wpf.Infrastructure;
 using Nutri.Wpf.Model;
 using Nutri.Wpf.Service;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Nutri.Wpf.ViewModel;
@@ -21,17 +23,27 @@ public class StatisticsViewModel : BaseViewModel
         _appSettings = appSettings;
     }
 
-    public SeriesCollection CaloriesConsumpHistory { get; set; }
+    private LazyProperty<CartesianChart>? _consumptionHistory = null;
+    public LazyProperty<CartesianChart> ConsumptionHistory => _consumptionHistory ??= new(GetConsumptionHistory);
+
+    private LazyProperty<CartesianChart>? _consumptionHistoryTest= null;
+    public LazyProperty<CartesianChart> ConsumptionHistoryTest => _consumptionHistoryTest ??= new(GetConsumptionHistory);
+
+    public Timeframe CurrentTimeframe => Timeframe.Last7Days;
 
     public async Task Laoded()
     {
-        await Task.Run(SetCaloriesConsumpHistory);
+        //await LoadConsumptionHistory(Timeframe.ThisMonth);
     }
 
-    private async Task SetCaloriesConsumpHistory()
+    async Task<CartesianChart> GetConsumptionHistory(CancellationToken cancellationToken)
     {
-        var portions = await _dayDistributionService.GetFoodPortions(Timeframe.Last7Days);
-        CaloriesConsumpHistory = _graphService.GetNutrientHistory(portions, "Energy", Timeframe.Last7Days);
-        OnPropertyChanged(nameof(CaloriesConsumpHistory));
+        var foodPortions = await _dayDistributionService.GetFoodPortions(CurrentTimeframe);
+        var seriesCollection = _graphService.GetNutrientHistory(foodPortions, "Energy", CurrentTimeframe);
+        return new() 
+        { 
+            Series = seriesCollection,
+            AxisX = _graphService.GetXAxes(CurrentTimeframe),
+        };
     }
 }
